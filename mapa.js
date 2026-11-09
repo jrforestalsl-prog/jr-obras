@@ -49,11 +49,13 @@
     const $=s=>ov.querySelector(s),msg=t=>$('#mp-msg').textContent=t;
     const cerrar=()=>{try{map&&map.remove()}catch(e){}ov.remove()};
     try{await leaflet()}catch(e){msg('No se pudo cargar el mapa. Mira si tienes internet.');ov.querySelector('[data-m=close]').onclick=cerrar;return}
-    const map=L.map($('#mp-map'),{zoomControl:true,attributionControl:true,maxZoom:21}).setView([43.36,-5.85],9);
-    const pnoa=L.tileLayer('https://www.ign.es/wmts/pnoa-ma?request=GetTile&service=WMTS&version=1.0.0&Format=image/jpeg&layer=OI.OrthoimageCoverage&style=default&tilematrixset=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}',{maxZoom:21,maxNativeZoom:19,attribution:'PNOA © IGN'}).addTo(map);
-    const esri=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:21,maxNativeZoom:19,attribution:'© Esri'});
-    const cat=L.tileLayer.wms('https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx',{layers:'Catastro',format:'image/png',transparent:true,version:'1.1.1',maxZoom:21,attribution:'© Catastro'}).addTo(map);
-    L.control.layers({'Foto aérea (IGN)':pnoa,'Satélite (Esri)':esri},{'Lindes del Catastro':cat},{position:'topright'}).addTo(map);
+    const map=L.map($('#mp-map'),{zoomControl:true,attributionControl:true,maxZoom:22}).setView([43.36,-5.85],9);
+    // Foto aérea del IGN pedida en tiempo real (WMS): se ve a su máxima resolución y nítida en pantallas de móvil.
+    const R=Math.min(2,window.devicePixelRatio||1),T=Math.round(256*R);
+    const pnoa=L.tileLayer.wms('https://www.ign.es/wms-inspire/pnoa-ma',{layers:'OI.OrthoimageCoverage',format:'image/jpeg',version:'1.3.0',tileSize:T,zoomOffset:R>1?-1:0,maxZoom:22,attribution:'PNOA © IGN'}).addTo(map);
+    const esri=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:22,maxNativeZoom:19,detectRetina:true,attribution:'© Esri'});
+    const cat=L.tileLayer.wms('https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx',{layers:'Catastro',format:'image/png',transparent:true,version:'1.1.1',tileSize:T,zoomOffset:R>1?-1:0,maxZoom:22,attribution:'© Catastro'}).addTo(map);
+    L.control.layers({'Foto aérea IGN (mejor)':pnoa,'Satélite Esri':esri},{'Lindes del Catastro':cat},{position:'topright'}).addTo(map);
 
     let pts=[],linde=null;const capa=L.layerGroup().addTo(map);
     const sep=()=>Math.max(0.5,parseFloat(String($('#mp-sep').value).replace(',','.'))||3),cerrada=()=>$('#mp-cer').checked;
