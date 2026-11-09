@@ -152,6 +152,22 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.35}
 .qa i{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff}
 .qa i svg{width:24px;height:24px}
 .qa:focus-visible{outline:2px solid var(--pine)}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.work{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 14px;display:grid;justify-items:center;gap:10px;cursor:pointer;color:var(--ink);font-weight:700;font-size:17px;text-align:center;min-height:132px;align-content:center}
+.work i{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;color:#fff}
+.work:focus-visible{outline:2px solid var(--pine)}
+.mq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.mq{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:14px 10px;display:grid;justify-items:center;gap:6px;cursor:pointer;color:var(--ink);text-align:center;position:relative}
+.mq svg{width:44px;height:44px}
+.mq b{font-size:15px;line-height:1.2}
+.mq span{font-size:13px;color:var(--muted)}
+.mq.on{border-color:var(--pine);background:var(--pine-soft)}
+.mq.on::after{content:"✓";position:absolute;top:8px;right:10px;width:22px;height:22px;border-radius:50%;background:var(--pine);color:var(--pine-ink);font-size:13px;display:grid;place-items:center;font-weight:700}
+.step{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:6px}
+.step button{width:52px;height:52px;border-radius:12px;border:0;background:var(--surface);font-size:28px;font-weight:700;cursor:pointer;color:var(--ink)}
+.step b{flex:1;text-align:center;font-family:var(--f-display);font-size:30px}
+.step small{display:block;font-family:var(--f-body);font-size:13px;color:var(--muted);font-weight:500}
+.back{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);border:0;border-radius:999px;padding:8px 14px;font-weight:600;cursor:pointer;color:var(--ink)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:2px;cursor:pointer;text-align:left}
 .stat small{font-size:13px;color:var(--muted);font-weight:600}
@@ -488,6 +504,26 @@ function mensajeDoc(d){const t=totals(d);const E=S.aj.empresa;
 
 /* ---------- Vistas ---------- */
 S.licit=null;S.licitBusy=false;
+const TRABAJOS=[
+ {id:'desbroce',n:'Desbroce',serv:'Desbroce',col:'var(--c-green)',ic:'desbrozadora',maq:['desbro','cortac','tractor','robot','mini','cab-desb']},
+ {id:'poda',n:'Poda y tala',serv:'Podas y talas',col:'var(--c-orange)',ic:'motosierra',maq:['motos','plataf','astill','camion','cab-pinza']},
+ {id:'excav',n:'Excavaciones',serv:'Movimiento de tierras',col:'#8D6E3F',ic:'excavadora',maq:['excav','mini','dumper','camion','cab-mart','cab-cazo']},
+ {id:'cierres',n:'Cierres y vallados',modo:'cercado',col:'var(--c-blue)',ic:'cierre'},
+ {id:'setos',n:'Setos',modo:'seto',col:'#2F8F6B',ic:'seto'},
+ {id:'jardin',n:'Jardinería',serv:'Jardinería',col:'#5AA02C',ic:'tractor cortacesped',maq:['cortac','desbro','motos']},
+ {id:'obra',n:'Obra civil',serv:'Obra civil y construcción',col:'var(--c-purple)',ic:'dumper',maq:['mini','excav','dumper','camion','cab-mart']},
+ {id:'lena',n:'Leña',serv:'Venta de leña',col:'var(--c-red)',ic:'camion',maq:['camion','motos','astill']},
+ {id:'refo',n:'Reforestación',serv:'Reforestación',col:'#3C7A3A',ic:'arbol',maq:['mini','cab-ahoy','camion']},
+ {id:'otro',n:'Otro trabajo',serv:'Otro',col:'var(--muted)',ic:'otro',maq:[]}];
+function workIcon(ic,sz){if(ic==='cierre')return `<svg viewBox="0 0 48 48" width="${sz}" height="${sz}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40V12l4-5 4 5v28M22 40V12l4-5 4 5v28M36 40V12l4-5 4 5v28M4 18h44M4 32h44"/></svg>`;
+ if(ic==='seto')return `<svg viewBox="0 0 48 48" width="${sz}" height="${sz}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 38h36V20a6 6 0 0 0-6-6h-2a6 6 0 0 0-10-3 6 6 0 0 0-10 3h-2a6 6 0 0 0-6 6z"/><path d="M14 38v4M34 38v4"/></svg>`;
+ if(ic==='arbol')return `<svg viewBox="0 0 48 48" width="${sz}" height="${sz}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4 10 22h8L8 34h32L30 22h8z"/><path d="M24 34v10"/></svg>`;
+ return maqIcon(ic,sz)}
+function dictBox(){return `<p class="small" style="margin:0">Pulsa el micrófono del teclado y cuéntalo: «obra en Lieres, 2 operarios 3 días, el dumper me cuesta 150 al día».</p>
+  <textarea id="o-dict" class="inp" rows="3" data-x="dict" placeholder="Habla o escribe aquí…">${esc(S.dict||'')}</textarea>
+  <button class="btn pri" data-act="rellenar" id="btn-rellenar">Rellenar</button>`}
+function vistaTrabajos(){return `${statusNote()}<div class="sec-title"><h1>¿Qué trabajo es?</h1></div>
+  <div class="work-grid">${TRABAJOS.map(t=>`<button class="work" data-act="selwork" data-arg="${t.id}"><i style="background:${t.col}">${workIcon(t.ic,40)}</i>${esc(t.n)}</button>`).join('')}</div>`}
 const NAV=[['inicio','Inicio','home'],['calcular','Calcular','calc'],['documentos','Documentos','doc'],['clientes','Clientes','users'],['trabajos','Trabajos','work'],['licitaciones','Licitar','search']];
 function render(){
   $('#nav').innerHTML=NAV.map(([k,t,i])=>`<button class="nav ${S.view===k?'on':''}" data-act="go" data-arg="${k}" ${S.view===k?'aria-current="page"':''}>${svg(i)}${t}</button>`).join('');
@@ -534,60 +570,43 @@ inicio(){
    ${S.docs.length?`<div class="list">${sortDocs(S.docs).slice(0,5).map(docItem).join('')}</div>`:`<div class="empty">Aún no hay presupuestos ni facturas.<br>Empieza en «Calcular».</div>`}</section>`;
 },
 calcular(){
-  const c=S.calc,A=S.aj;
+  const c=S.calc,A=S.aj;if(!c.sel)return vistaTrabajos();const TW=TRABAJOS.find(t=>t.id===c.sel)||TRABAJOS[TRABAJOS.length-1];
   const cliOpts=`<option value="">Sin elegir</option>`+S.clientes.slice().sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'')).map(x=>`<option value="${x.id}" ${c.cliente===x.id?'selected':''}>${esc(x.nombre)}</option>`).join('');
   const ref=(c.refcat||'').replace(/\s/g,'');
   const comun=`<section class="card">
-   <div class="grid2 stack">
-    <label class="f">Cliente<select id="c-cli" class="inp" data-k="cliente">${cliOpts}</select></label>
-    <label class="f">Lugar de la obra<input id="c-lugar" class="inp" data-k="lugar" list="lugares" value="${esc(c.lugar)}" placeholder="Ej.: Lieres, Siero" autocomplete="off"><datalist id="lugares">${LUGARES.map(l=>`<option value="${esc(l.n)}"></option>`).join('')}</datalist><span id="lug-hint" class="small" style="font-weight:500">${lugHint()}</span></label>
-   </div>
-   <label class="f">Referencia catastral (opcional)<input id="c-ref" class="inp" data-k="refcat" value="${esc(c.refcat)}" placeholder="14 o 20 caracteres" autocomplete="off"></label>
-   <div class="row">
-    <a class="btn sm" id="lnk-cat" href="${ref.length>=14?'https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?refcat='+encodeURIComponent(ref):'https://www1.sedecatastro.gob.es/'}" target="_blank" rel="noopener">${svg('map')}Ver en el Catastro</a>
-    <a class="btn sm" id="lnk-map" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.lugar||'Asturias')}" target="_blank" rel="noopener">${svg('map')}Abrir en Google Maps</a>
-   </div>
-   <p class="muted small" style="margin:0">En el Catastro ves la superficie de la parcela. Ponla abajo en m².</p>
+   <label class="f">Lugar de la obra<input id="c-lugar" class="inp" data-k="lugar" list="lugares" value="${esc(c.lugar)}" placeholder="Ej.: Lieres, Siero" autocomplete="off"><datalist id="lugares">${LUGARES.map(l=>`<option value="${esc(l.n)}"></option>`).join('')}</datalist><span id="lug-hint" class="small" style="font-weight:500">${lugHint()}</span></label>
+   <label class="f">Cliente<select id="c-cli" class="inp" data-k="cliente">${cliOpts}</select></label>
+   <details><summary style="cursor:pointer;font-weight:600">Mapa, Catastro y km</summary><div style="display:grid;gap:10px;margin-top:10px">
+    <label class="f">Referencia catastral<input id="c-ref" class="inp" data-k="refcat" value="${esc(c.refcat)}" placeholder="14 o 20 caracteres" autocomplete="off"></label>
+    <div class="row"><a class="btn sm" id="lnk-cat" href="${ref.length>=14?'https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?refcat='+encodeURIComponent(ref):'https://www1.sedecatastro.gob.es/'}" target="_blank" rel="noopener">${svg('map')}Catastro</a>
+     <a class="btn sm" id="lnk-map" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(c.lugar||'Asturias')}" target="_blank" rel="noopener">${svg('map')}Google Maps</a></div>
+    <label class="f">Km hasta la obra (ida)<input id="c-km" class="inp num" type="number" inputmode="decimal" min="0" data-k="km" value="${c.km}"></label>
+   </div></details>
   </section>`;
   let modo='';
   if(c.modo==='ojo'){
-    const o=c.ojo;const rd=o.maleza?rendimiento(o.maleza):null;
-    let sug='';
-    if(o.maleza&&num(o.m2)>0){
-      if(rd){const h=num(o.m2)/rd.mh/Math.max(1,num(c.ops));const hr=Math.round(h*2)/2||0.5;
-        sug=`<div class="notice" style="background:var(--pine-soft);color:var(--pine)">Según tus trabajos (${rd.n}): hacéis unos <b>${fx(rd.mh)} m² por hora y operario</b>. Para ${fx(o.m2)} m² con ${num(c.ops)} operario${num(c.ops)>1?'s':''}: <b>unas ${fx(hr)} h</b>.<div style="margin-top:8px"><button class="btn sm" data-act="usarsug" data-arg="${hr}">Usar ${fx(hr)} h</button></div></div>`}
-      else sug=`<p class="muted small" style="margin:0">Todavía no hay trabajos terminados de ${esc(veg(o.maleza).nombre.toLowerCase())}. Cuando termines uno, apunta las horas reales y los m² y la app empezará a calcularlo sola.</p>`}
-    const lbl='font-size:14px;font-weight:600;color:var(--muted);margin-bottom:6px';
-    const maqHTML=`<div><div style="${lbl}">Máquinas${(A.serviciosMaq||{})[o.trabajo]?' (ya marcadas las de este servicio)':' (opcional)'}</div><div class="chips">${A.maquinas.map(M=>`<button class="chip ${(o.maqs||[]).some(m=>m.id===M.id)?'on':''}" data-act="maqtog" data-arg="${M.id}" style="display:inline-flex;align-items:center;gap:6px">${M.foto?`<img src="${esc(M.foto)}" alt="" style="width:22px;height:22px;border-radius:5px;object-fit:cover">`:maqIcon(M.nombre,20)}${esc(M.nombre)}${M.modelo?' · '+esc(M.modelo):''}</button>`).join('')}</div></div>
-      ${(o.maqs||[]).map((m,i)=>{const M=A.maquinas.find(x=>x.id===m.id)||(m.nombre?{id:'c'+i,nombre:m.nombre,tarifa:0}:null);if(!M)return'';const tf=(m.tarifa===''||m.tarifa==null)?M.tarifa:m.tarifa;
-        return `<div class="grid2"><label class="f">Horas de ${esc(M.nombre.toLowerCase())}<input id="o-mq-${i}-h" class="inp num" type="number" inputmode="decimal" min="0" step="0.5" data-k="ojo.maqs.${i}.horas" value="${m.horas??''}" placeholder="Mismas horas"></label><label class="f">Te cuesta (€/h)<input id="o-mq-${i}-t" class="inp num" type="number" inputmode="decimal" min="0" step="any" data-k="ojo.maqs.${i}.tarifa" value="${tf}"></label></div>`}).join('')}
-      ${(o.maqs||[]).length?'<p class="muted small" style="margin:0">Si una máquina la tienes por días, pon días × 8 horas.</p>':''}`;
-    const prodHTML=`<div><div style="${lbl}">Productos (opcional)</div><div class="chips">${A.productos.map(P=>`<button class="chip ${(o.prods||[]).some(p=>p.id===P.id)?'on':''}" data-act="prodtog" data-arg="${P.id}">${esc(P.nombre)}</button>`).join('')}</div></div>
-      ${(o.prods||[]).map((p,i)=>{const P=A.productos.find(x=>x.id===p.id);return P?`<label class="f">${esc(P.nombre)}: cantidad en ${esc(P.unidad)} (${eur(P.precio)} €/${esc(P.unidad)})<input id="o-pr-${P.id}" class="inp num" type="number" inputmode="decimal" min="0" step="any" data-k="ojo.prods.${i}.cant" value="${p.cant??''}"></label>`:''}).join('')}`;
-    const dict=`<div class="zone" style="border-style:solid;background:var(--pine-soft);border-color:transparent">
-      <h3 style="font-size:19px">Cuéntame la obra</h3>
-      <p class="small" style="margin:0">Pulsa el <b>micrófono de tu teclado</b> y di, por ejemplo: «Obra en Lieres, desbroce con 2 operarios 3 días, el dumper me cuesta 150 al día». Luego pulsa Rellenar.</p>
-      <textarea id="o-dict" class="inp" rows="3" data-x="dict" placeholder="Habla o escribe aquí…">${esc(S.dict||'')}</textarea>
-      <button class="btn pri" data-act="rellenar" id="btn-rellenar">Rellenar</button></div>`;
-    modo=(SAMPLE?dict:'')+`<label class="f">Servicio<select id="o-trab" class="inp" data-k="ojo.trabajo">${A.servicios.map(t=>`<option ${o.trabajo===t?'selected':''}>${esc(t)}</option>`).join('')}</select></label>
-     <div class="grid2">
-      <label class="f">Lo que tardáis<input id="o-horas" class="inp num" type="number" inputmode="decimal" min="0" step="0.5" data-k="ojo.horas" value="${o.horas}"></label>
-      <div><div style="font-size:14px;font-weight:600;color:var(--muted);margin-bottom:6px">En</div>
-       <div class="seg"><button class="${o.unidad==='horas'?'on':''}" data-act="cset" data-arg="ojo.unidad=horas">Horas</button><button class="${o.unidad==='jornadas'?'on':''}" data-act="cset" data-arg="ojo.unidad=jornadas">Jornadas</button></div></div>
-     </div>
-     <div class="chips">${(o.unidad==='jornadas'?[0.5,1,2,3,5]:[2,3,4,5,7]).map(v=>`<button class="chip ${num(o.horas)===v?'on':''}" data-act="cset" data-arg="ojo.horas=${v}">${fx(v)} ${o.unidad==='jornadas'?(v===1?'jornada':'jorn.'):'h'}</button>`).join('')}</div>
-     ${maqHTML}
-     ${prodHTML}
-     <div class="grid2">
-      <label class="f">Retirada de restos (€)<input id="o-ret" class="inp num" type="number" inputmode="decimal" min="0" data-k="ojo.retirada" value="${o.retirada}"></label>
-      <label class="f">Otro material (€)<input id="o-mat" class="inp num" type="number" inputmode="decimal" min="0" data-k="ojo.material" value="${o.material}"></label>
-     </div>
-     <label class="f">Descripción para el cliente (opcional)<textarea id="o-desc" class="inp" data-k="ojo.desc" rows="3" placeholder="Ej.: Desbroce de finca con desbrozadora de mano">${esc(o.desc)}</textarea></label>
-     <details ${o.maleza||num(o.m2)?'open':''}><summary style="cursor:pointer;font-weight:600">Para que la app aprenda (opcional)</summary>
+    const o=c.ojo;const lbl='font-size:15px;font-weight:700;margin-bottom:8px';
+    const rel=TW.maq||[];const lista=S.verTodas||!rel.length?A.maquinas:A.maquinas.filter(m=>rel.includes(m.id));
+    const sel=id=>(o.maqs||[]).some(x=>x.id===id);
+    const jorn=o.unidad==='jornadas';
+    modo=`<div><div style="${lbl}">Máquinas</div>
+      <div class="mq-grid">${lista.map(M=>`<button class="mq ${sel(M.id)?'on':''}" data-act="maqtog" data-arg="${M.id}">${M.foto?`<img src="${esc(M.foto)}" alt="" style="width:56px;height:56px;border-radius:12px;object-fit:cover">`:maqIcon(M.nombre,44)}<b>${esc(M.nombre)}</b><span>${fx(M.tarifa)} €/h</span></button>`).join('')}</div>
+      ${rel.length?`<button class="btn sm" data-act="vertodas" style="margin-top:8px">${S.verTodas?'Ver solo las de este trabajo':'Ver todas las máquinas'}</button>`:''}</div>
+     <div><div style="${lbl}">¿Cuánto tardáis?</div>
+      <div class="seg" style="margin-bottom:8px"><button class="${!jorn?'on':''}" data-act="cset" data-arg="ojo.unidad=horas">Horas</button><button class="${jorn?'on':''}" data-act="cset" data-arg="ojo.unidad=jornadas">Días</button></div>
+      <div class="step"><button data-act="step" data-arg="ojo.horas:${jorn?-0.5:-1}" aria-label="Menos">−</button><b class="num">${fx(o.horas)}<small>${jorn?(num(o.horas)===1?'día':'días'):'horas'}</small></b><button data-act="step" data-arg="ojo.horas:${jorn?0.5:1}" aria-label="Más">+</button></div></div>
+     <div><div style="${lbl}">Operarios</div>
+      <div class="step"><button data-act="step" data-arg="ops:-1" aria-label="Menos">−</button><b class="num">${num(c.ops)}<small>${num(c.ops)===1?'operario':'operarios'}</small></b><button data-act="step" data-arg="ops:1" aria-label="Más">+</button></div></div>
+     ${(o.maqs||[]).length?`<details><summary style="cursor:pointer;font-weight:600">Horas de cada máquina (si no son las mismas)</summary><div style="display:grid;gap:10px;margin-top:10px">${(o.maqs||[]).map((m,i)=>{const M=A.maquinas.find(x=>x.id===m.id);return M?`<div class="grid2"><label class="f">${esc(M.nombre)} (horas)<input id="o-mq-${i}-h" class="inp num" type="number" inputmode="decimal" min="0" step="0.5" data-k="ojo.maqs.${i}.horas" value="${m.horas??''}" placeholder="Las mismas"></label><label class="f">€/h<input id="o-mq-${i}-t" class="inp num" type="number" inputmode="decimal" min="0" step="any" data-k="ojo.maqs.${i}.tarifa" value="${(m.tarifa===''||m.tarifa==null)?M.tarifa:m.tarifa}"></label></div>`:''}).join('')}</div></details>`:''}
+     <details ${num(o.retirada)||num(o.material)||(o.prods||[]).length||o.desc?'open':''}><summary style="cursor:pointer;font-weight:600">Más opciones (retirada, material, descripción…)</summary>
       <div style="display:grid;gap:12px;margin-top:12px">
-       <div class="grid2"><label class="f">Maleza<select id="o-mal" class="inp" data-k="ojo.maleza" data-re="1"><option value="">Sin elegir</option>${A.vegetacion.map(v=>`<option value="${v.id}" ${o.maleza===v.id?'selected':''}>${esc(v.nombre)}</option>`).join('')}</select></label>
-        <label class="f">m² aproximados<input id="o-m2" class="inp num" type="number" inputmode="decimal" min="0" data-k="ojo.m2" value="${o.m2}"></label></div>
-       ${sug}</div></details>`;
+       <div class="grid2"><label class="f">Retirada de restos (€)<input id="o-ret" class="inp num" type="number" inputmode="decimal" min="0" data-k="ojo.retirada" value="${o.retirada}"></label>
+        <label class="f">Material (€)<input id="o-mat" class="inp num" type="number" inputmode="decimal" min="0" data-k="ojo.material" value="${o.material}"></label></div>
+       <div><div class="small muted" style="margin-bottom:6px">Productos</div><div class="chips">${A.productos.map(P=>`<button class="chip ${(o.prods||[]).some(p=>p.id===P.id)?'on':''}" data-act="prodtog" data-arg="${P.id}">${esc(P.nombre)}</button>`).join('')}</div></div>
+       ${(o.prods||[]).map((p,i)=>{const P=A.productos.find(x=>x.id===p.id);return P?`<label class="f">${esc(P.nombre)} (${esc(P.unidad)})<input id="o-pr-${P.id}" class="inp num" type="number" inputmode="decimal" min="0" step="any" data-k="ojo.prods.${i}.cant" value="${p.cant??''}"></label>`:''}).join('')}
+       <label class="f">Descripción para el cliente<textarea id="o-desc" class="inp" data-k="ojo.desc" rows="3" placeholder="Si lo dejas vacío, la app la escribe sola">${esc(o.desc)}</textarea></label>
+       ${c.sel==='desbroce'?`<button class="btn sm" data-act="cset" data-arg="modo=desbroce">Calcular por metros cuadrados</button>`:''}
+      </div></details>`;
   }else if(c.modo==='desbroce'){
     modo=c.zonas.map((z,i)=>`<div class="zone">
      <div class="zone-h"><h3>Zona ${i+1}</h3>${c.zonas.length>1?`<button class="btn sm danger" data-act="zdel" data-arg="${i}">Quitar</button>`:''}</div>
@@ -645,15 +664,12 @@ calcular(){
      <label class="check"><input id="k-desb" type="checkbox" data-k="cerc.desb" ${k.desb?'checked':''}>Desbrozar la línea antes</label>
      <button class="btn sm" data-act="kguardar">Guardar como mi tipo de cierre</button>`;
   }
-  return `${statusNote()}<div class="sec-title"><h1>Calcular</h1></div>
-   <div class="seg" role="tablist">${[['ojo','A ojo'],['desbroce','Desbroce'],['seto','Setos'],['cercado','Cercados']].map(([k,t])=>`<button class="${c.modo===k?'on':''}" data-act="cset" data-arg="modo=${k}">${t}</button>`).join('')}</div>
+  const opsHTML=c.modo==='ojo'?'':`<div class="grid2"><label class="f">Operarios<select id="c-ops" class="inp" data-k="ops">${[1,2,3,4,5].map(n=>`<option value="${n}" ${num(c.ops)===n?'selected':''}>${n} operario${n>1?'s':''}</option>`).join('')}</select></label><div></div></div>`;
+  return `${statusNote()}<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><button class="back" data-act="cambiartrabajo">← Cambiar</button>
+    <span style="display:inline-flex;align-items:center;gap:10px"><i style="width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:#fff;background:${TW.col}">${workIcon(TW.ic,26)}</i><h1 style="font-size:28px">${esc(TW.n)}</h1></span></div>
+   ${SAMPLE&&c.modo==='ojo'?`<details class="card" style="gap:10px"><summary style="cursor:pointer;font-weight:700">Dictar la obra</summary>${(()=>{const t=dictBox();return t})()}</details>`:''}
    ${comun}
-   <section class="card">${modo}
-    <div class="grid2">
-     <label class="f">Operarios<select id="c-ops" class="inp" data-k="ops">${[1,2,3,4,5].map(n=>`<option value="${n}" ${num(c.ops)===n?'selected':''}>${n} operario${n>1?'s':''}</option>`).join('')}</select></label>
-     <label class="f">Km hasta la obra (ida)<input id="c-km" class="inp num" type="number" inputmode="decimal" min="0" data-k="km" value="${c.km}"></label>
-    </div>
-   </section>
+   <section class="card">${modo}${opsHTML}</section>
    <section class="result" id="res" aria-live="polite"></section>`;
 },
 documentos(){
@@ -980,8 +996,8 @@ Productos (id: nombre, unidad, €): ${A.productos.map(p=>p.id+': '+p.nombre+', 
 Una jornada son ${A.jornada} horas. Convierte días a horas (días × ${A.jornada}). Si da un precio por día de una máquina, pásalo a €/h dividiendo entre ${A.jornada}.
 Devuelve este JSON (usa null en lo que no diga):
 {"servicio": uno de los servicios, "lugar": "pueblo o concejo", "operarios": número, "horas": horas que dura la obra (por operario), "maquinas": [{"id": id del catálogo o null, "nombre": nombre si no está en el catálogo, "horas": número o null, "eur_hora": número o null}], "productos": [{"id": id, "cantidad": número}], "retirada_eur": número o null, "material_eur": número o null, "descripcion": "texto corto y profesional para el cliente, frases separadas por saltos de línea"}`;
-  try{const d=await SAMPLE.json(prompt,{modelTier:'quick'});const c=S.calc,o=c.ojo;c.modo='ojo';S.precioFijo=null;
-   if(d.servicio&&A.servicios.includes(d.servicio))sugerirEquipo(d.servicio);
+  try{const d=await SAMPLE.json(prompt,{modelTier:'quick'});const c=S.calc,o=c.ojo;c.modo='ojo';if(!c.sel)c.sel='otro';S.precioFijo=null;
+   if(d.servicio&&A.servicios.includes(d.servicio)){sugerirEquipo(d.servicio);const tw=TRABAJOS.find(t=>t.serv===d.servicio);if(tw)c.sel=tw.id}
    if(d.lugar){c.lugar=d.lugar;const L=findLugar(d.lugar);if(L)c.km=kmDesde(L)}
    if(num(d.operarios)>0)c.ops=Math.min(5,Math.max(1,Math.round(num(d.operarios))));
    if(num(d.horas)>0){o.horas=num(d.horas);o.unidad='horas'}
@@ -1012,7 +1028,13 @@ Si no encuentras ninguna, responde [].`;
   catch(e){console.error(e);toast('No se ha podido buscar. Revisa que Gemini esté activado en Firebase.')}
   S.licitBusy=false;render()},
  licit2calc(a){const x=(S.licit&&S.licit.items||[])[+a];if(!x)return;const o=S.calc.ojo;S.calc.modo='ojo';S.calc.lugar=x.lugar||'';const L=findLugar(x.lugar);if(L)S.calc.km=kmDesde(L);
-  o.desc=x.titulo+(x.resumen?'\n'+x.resumen:'');S.view='calcular';render();window.scrollTo(0,0)},
+  o.desc=x.titulo+(x.resumen?'\n'+x.resumen:'');S.calc.sel=S.calc.sel||'otro';S.view='calcular';render();window.scrollTo(0,0)},
+ selwork(a){const T=TRABAJOS.find(t=>t.id===a);if(!T)return;const c=S.calc;c.sel=a;S.precioFijo=null;S.verTodas=false;
+  if(T.modo){c.modo=T.modo;if(T.modo==='seto')c.seto.tipo='rebaje'}else{c.modo='ojo';sugerirEquipo(T.serv);c.ojo.maqs=[]}
+  render();window.scrollTo(0,0)},
+ cambiartrabajo(){S.calc.sel=null;render();window.scrollTo(0,0)},
+ vertodas(){S.verTodas=!S.verTodas;render()},
+ step(a){const [p,d]=a.split(':');const cur=num(getPath(S.calc,p));let v=Math.max(p==='ops'?1:0.5,r2(cur+num(d)));if(p==='ops')v=Math.min(10,v);setPath(S.calc,p,v);S.precioFijo=null;render()},
  async enviarfirma(a,b){const d=S.docs.find(x=>x.id===a);if(!d)return;if(d.firma){toast('Este presupuesto ya está firmado.');return}
   let token=d.firmaToken;
   try{if(!token){token=(crypto.randomUUID?crypto.randomUUID():uid()+uid()).replace(/-/g,'');
