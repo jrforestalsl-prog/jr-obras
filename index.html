@@ -153,6 +153,7 @@ textarea.inp{min-height:84px;resize:vertical;line-height:1.35}
 .qa i svg{width:24px;height:24px}
 .qa:focus-visible{outline:2px solid var(--pine)}
 .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.work-grid .work:last-child:nth-child(odd){grid-column:1/-1}
 .work{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 14px;display:grid;justify-items:center;gap:10px;cursor:pointer;color:var(--ink);font-weight:700;font-size:17px;text-align:center;min-height:132px;align-content:center}
 .work i{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;color:#fff}
 .work:focus-visible{outline:2px solid var(--pine)}
@@ -513,7 +514,6 @@ const TRABAJOS=[
  {id:'jardin',n:'Jardinería',serv:'Jardinería',col:'#5AA02C',ic:'tractor cortacesped',maq:['cortac','desbro','motos']},
  {id:'obra',n:'Obra civil',serv:'Obra civil y construcción',col:'var(--c-purple)',ic:'dumper',maq:['mini','excav','dumper','camion','cab-mart']},
  {id:'lena',n:'Leña',serv:'Venta de leña',col:'var(--c-red)',ic:'camion',maq:['camion','motos','astill']},
- {id:'refo',n:'Reforestación',serv:'Reforestación',col:'#3C7A3A',ic:'arbol',maq:['mini','cab-ahoy','camion']},
  {id:'otro',n:'Otro trabajo',serv:'Otro',col:'var(--muted)',ic:'otro',maq:[]}];
 function workIcon(ic,sz){if(ic==='cierre')return `<svg viewBox="0 0 48 48" width="${sz}" height="${sz}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40V12l4-5 4 5v28M22 40V12l4-5 4 5v28M36 40V12l4-5 4 5v28M4 18h44M4 32h44"/></svg>`;
  if(ic==='seto')return `<svg viewBox="0 0 48 48" width="${sz}" height="${sz}" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 38h36V20a6 6 0 0 0-6-6h-2a6 6 0 0 0-10-3 6 6 0 0 0-10 3h-2a6 6 0 0 0-6 6z"/><path d="M14 38v4M34 38v4"/></svg>`;
