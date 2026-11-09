@@ -416,7 +416,7 @@ const veg=id=>S.aj.vegetacion.find(v=>v.id===id)||S.aj.vegetacion[0];
 const ctipo=id=>S.aj.cercado.tipos.find(t=>t.id===id)||S.aj.cercado.tipos[0];
 
 function compute(){
-  const c=S.calc,A=S.aj,ops=Math.max(1,num(c.ops));const desplaz=num(c.km)*2*num(A.kmPrecio);
+  const c=S.calc,A=S.aj,ops=Math.max(1,num(c.ops));const desplaz=(c.partes&&c.partes.length)?0:num(c.km)*2*num(A.kmPrecio);
   let horas=0,coste=0,desg=[],titulo='',desc='',prodTot=0,prodLines=[],hpReal=null,otros=0,matLines=[],matTot=0;
   if(c.modo==='ojo'){
     const o=c.ojo;const hDur=num(o.horas)*(o.unidad==='jornadas'?num(A.jornada):1);const hp=hDur*ops;const mo=hp*num(A.tarifaOperario);
@@ -493,7 +493,15 @@ function cargarTipo(id){const k=S.calc.cerc,T=ctipo(id);k.tipo=T.id;k.sep=num(T.
 function rendimiento(maleza){let m2=0,hp=0,n=0;
   for(const t of S.trabajos){if(t.estado==='hecho'&&t.maleza===maleza&&num(t.m2)>0&&num(t.horasReal)>0){m2+=num(t.m2);hp+=num(t.horasReal)*Math.max(1,num(t.operarios));n++}}
   return n?{mh:r2(m2/hp),n}:null}
+function lineasDe(R,lugar){const iv=num(S.aj.iva),ls=[];const lineD=`${R.titulo}${lugar?' en '+lugar:''}\n${R.desc}`;
+  if(R.matLines&&R.matLines.length){const resto=r2(R.trabajo-R.matTot);ls.push({d:lineD,c:1,p:resto,iva:iv,irpf:0});R.matLines.forEach(l=>ls.push({d:`${l.d} (${l.u})`,c:l.c,p:l.p,iva:iv,irpf:0}))}
+  else if(R.trabajo>0||!(R.prodLines||[]).length)ls.push({d:lineD,c:1,p:R.trabajo,iva:iv,irpf:0});
+  (R.prodLines||[]).forEach(l=>ls.push({...l,iva:iv,irpf:0}));return ls}
+function resultadoActual(){const R=compute();if(S.precioFijo!=null)applyFijo(R);return R}
 function mensajeCliente(R){
+  const P=S.calc.partes||[];
+  if(P.length){const all=[...P,R];const tot=all.reduce((a,x)=>a+num(x.precio),0);
+    return `Hola, te paso presupuesto de la obra:\n\n${all.map(x=>`${x.titulo}\n${x.desc}`).join('\n\n')}\n\nPrecio total: ${eur0(tot)} € + IVA (${eur(tot*(1+num(S.aj.iva)/100))} € en total).\n\nSi te parece bien, te digo día y lo hacemos. Un saludo.`}
   const pl=R.prodLines.map(l=>`\n- ${l.d.replace(/ \(.*\)$/,'')}: ${fx(l.c)} ${(l.d.match(/\((.*)\)$/)||[,''])[1]}`).join('');
   return `Hola, te paso presupuesto del trabajo:\n\n${R.titulo}\n${R.desc}${pl}\n\nPrecio: ${eur0(R.precio)} € + IVA (${eur(R.conIva)} € en total).\n\nSi te parece bien, te digo día y lo hacemos. Un saludo.`;
 }
@@ -522,7 +530,7 @@ function workIcon(ic,sz){if(ic==='cierre')return `<svg viewBox="0 0 48 48" width
 function dictBox(){return `<p class="small" style="margin:0">Pulsa el micrófono del teclado y cuéntalo: «obra en Lieres, 2 operarios 3 días, el dumper me cuesta 150 al día».</p>
   <textarea id="o-dict" class="inp" rows="3" data-x="dict" placeholder="Habla o escribe aquí…">${esc(S.dict||'')}</textarea>
   <button class="btn pri" data-act="rellenar" id="btn-rellenar">Rellenar</button>`}
-function vistaTrabajos(){return `${statusNote()}<div class="sec-title"><h1>¿Qué trabajo es?</h1></div>
+function vistaTrabajos(){const P=S.calc.partes||[];return `${statusNote()}${P.length?`<div class="notice" style="background:var(--pine-soft);color:var(--pine)">Añadiendo a la obra: <b>${P.map(x=>esc(x.nombre)).join(' + ')}</b> (${eur0(P.reduce((a,x)=>a+num(x.precio),0))} €). Elige el siguiente trabajo.</div>`:''}<div class="sec-title"><h1>¿Qué trabajo es?</h1></div>
   <div class="work-grid">${TRABAJOS.map(t=>`<button class="work" data-act="selwork" data-arg="${t.id}"><i style="background:${t.col}">${workIcon(t.ic,40)}</i>${esc(t.n)}</button>`).join('')}</div>`}
 const NAV=[['inicio','Inicio','home'],['calcular','Calcular','calc'],['documentos','Documentos','doc'],['clientes','Clientes','users'],['trabajos','Trabajos','work'],['licitaciones','Licitar','search']];
 function render(){
@@ -833,6 +841,12 @@ function updateResult(){
       <div class="small muted">Coste real ${eur(E.costeReal)} €: operarios a ${fx(A.costeOperario)} €/h (${eur(E.mo)} €), máquinas, material y desplazamiento (${eur(E.otros)} €) y ${fx(A.gastosGenerales)} % de gastos generales${E.prod?`. Productos aparte: ${eur(E.prod)} €`:''}.</div>
       <div class="pill ${pierde?'p-bad':E.ganas<E.costeReal*0.05?'p-pend':'p-ok'}" style="justify-self:start;font-size:14px;padding:6px 12px">${pierde?`Con este precio pierdes ${eur(-E.ganas)} €`:`Con este precio ganas ${eur(E.ganas)} €`}</div>
      </div>`})():''}
+   ${(()=>{const P=S.calc.partes||[];if(!P.length)return'';const tot=P.reduce((a,x)=>a+num(x.precio),0)+R.precio;
+     return `<div style="background:rgba(255,255,255,.14);border-radius:12px;padding:12px;display:grid;gap:6px"><b>Esta obra lleva:</b>
+      ${P.map((x,i)=>`<div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span>${esc(x.nombre)}</span><span class="num">${eur0(x.precio)} € <button class="btn sm ghost" style="min-height:30px;padding:2px 8px" data-act="delparte" data-arg="${i}" aria-label="Quitar">✕</button></span></div>`).join('')}
+      <div style="display:flex;justify-content:space-between"><span>${esc((TRABAJOS.find(t=>t.id===S.calc.sel)||{}).n||'Este trabajo')} (ahora)</span><span class="num">${eur0(R.precio)} €</span></div>
+      <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.4);padding-top:6px;font-size:20px;font-weight:700"><span>Total obra</span><span class="num">${eur0(tot)} € + IVA</span></div></div>`})()}
+   <button class="btn ghost" data-act="addparte">${svg('plus')}Añadir otro trabajo a esta obra</button>
    <div class="row"><button class="btn" data-act="calc2doc">${svg('doc')}Crear presupuesto</button><button class="btn ghost" data-act="calccopy">${svg('copy')}Copiar mensaje</button></div>`;
   const ref=(S.calc.refcat||'').replace(/\s/g,'');const lc=$('#lnk-cat'),lm=$('#lnk-map');
   if(lc)lc.href=ref.length>=14?'https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?refcat='+encodeURIComponent(ref):'https://www1.sedecatastro.gob.es/';
@@ -1057,15 +1071,15 @@ Si no encuentras ninguna, responde [].`;
  zdel(a){S.calc.zonas.splice(+a,1);render()},
  calccopy(){const R=compute();if(S.precioFijo!=null)applyFijo(R);copy(mensajeCliente(R))},
  usarempresa(a){S.precioFijo=num(a);updateResult();toast('Precio de empresa aplicado')},
- calc2doc(){const R=compute();if(S.precioFijo!=null)applyFijo(R);const c=S.calc;
-  const lineD=`${R.titulo}${c.lugar?' en '+c.lugar:''}\n${R.desc}`;
+ calc2doc(){const R=resultadoActual();const c=S.calc;
   const meta=c.modo==='ojo'?{m2:num(c.ojo.m2)||'',maleza:c.ojo.maleza||''}:c.modo==='desbroce'?{m2:c.zonas.reduce((s,z)=>s+num(z.m2),0),maleza:c.zonas[0].veg}:{m2:'',maleza:''};
-  const iv=num(S.aj.iva);const ls=[];
-  if(R.matLines.length){R.matLines.forEach(l=>ls.push({d:`${l.d} (${l.u})`,c:l.c,p:l.p,iva:iv,irpf:0}));const resto=r2(R.trabajo-R.matTot);ls.unshift({d:lineD,c:1,p:resto,iva:iv,irpf:0})}
-  else if(R.trabajo>0||!R.prodLines.length)ls.push({d:lineD,c:1,p:R.trabajo,iva:iv,irpf:0});
-  R.prodLines.forEach(l=>ls.push({...l,iva:iv,irpf:0}));
+  const ls=[];(c.partes||[]).forEach(x=>ls.push(...lineasDe(x,c.lugar)));ls.push(...lineasDe(R,c.lugar));
   S.draft=newDraft('presupuesto',{clienteId:c.cliente,lugar:c.lugar,meta,lineas:ls,notas:c.refcat?`Referencia catastral: ${c.refcat}`:''});
-  openDocEditor()},
+  c.partes=[];openDocEditor()},
+ addparte(){const R=resultadoActual();const c=S.calc;const TW=TRABAJOS.find(t=>t.id===c.sel)||{};c.partes=c.partes||[];
+  c.partes.push({nombre:TW.n||R.titulo,titulo:R.titulo,desc:R.desc,trabajo:R.trabajo,precio:R.precio,prodLines:R.prodLines,matLines:R.matLines,matTot:R.matTot});
+  c.ojo.maqs=[];c.ojo.prods=[];c.ojo.desc='';c.ojo.retirada=0;c.ojo.material=0;S.precioFijo=null;c.sel=null;render();window.scrollTo(0,0);toast('Añadido. Elige el siguiente trabajo.')},
+ delparte(a){S.calc.partes.splice(+a,1);render()},
  newdoc(a){S.draft=newDraft(a);openDocEditor()},
  docview(a){S.form=null;S.draft=null;openDocView(a)},
  docedit(a){const d=S.docs.find(x=>x.id===a);if(!d)return;S.draft=clone(d);delete S.draft.nuevo;openDocEditor()},
