@@ -1,0 +1,31 @@
+{
+ "name": "JR - OBRAS",
+ "short_name": "JR Obras",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#F0F2F5",
+ "theme_color": "#FFFFFF",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "id": "./",
+ "description": "Presupuestos y obras de Jr Forestal"
+}
