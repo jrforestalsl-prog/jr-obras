@@ -305,7 +305,7 @@ const DEF={
  numeracion:{factura:1,presupuesto:1},
  iva:21,redondeo:5,kmPrecio:0.4,minimo:60,tarifaOperario:30,jornada:8,
  licit:{zona:'Asturias',servicios:'desbroce, limpieza de montes y fincas, tala, poda, cercados y vallados, movimiento de tierras, jardinería, reforestación, prevención de incendios',importeMax:150000,solvencia:'Empresa forestal con 5 trabajadores y maquinaria propia'},
- costeOperario:15,costeVer:2,gastosGenerales:15,beneficio:15,beneficioComp:8,modoPrecio:'competitivo',base:'Pajares (Lena)',
+ costeOperario:15,costeVer:2,costeMes:2140,horasAno:1700,gastosGenerales:15,beneficio:15,beneficioComp:8,modoPrecio:'competitivo',base:'Pajares (Lena)',
  serviciosMaq:{'Desbroce':['desbro'],'Podas y talas':['motos','plataf','astill'],'Movimiento de tierras':['excav','dumper','camion'],'Obra civil y construcción':['mini','dumper','camion'],'Cercados y vallados':['mini'],'Venta de leña':['camion']},
  serviciosProd:{'Venta de leña':['lena'],'Cercados y vallados':['poste','malla'],'Reforestación':['planta']},
  servicios:['Desbroce','Podas y talas','Rebaje / recorte de seto','Cercados y vallados','Movimiento de tierras','Obra civil y construcción','Jardinería','Reforestación','Venta de leña','Otro'],
@@ -603,6 +603,10 @@ calcular(){
      <div><div style="${lbl}">¿Cuánto tardáis?</div>
       <div class="seg" style="margin-bottom:8px"><button class="${!jorn?'on':''}" data-act="cset" data-arg="ojo.unidad=horas">Horas</button><button class="${jorn?'on':''}" data-act="cset" data-arg="ojo.unidad=jornadas">Días</button></div>
       <div class="step"><button data-act="step" data-arg="ojo.horas:${jorn?-0.5:-1}" aria-label="Menos">−</button><b class="num">${fx(o.horas)}<small>${jorn?(num(o.horas)===1?'día':'días'):'horas'}</small></b><button data-act="step" data-arg="ojo.horas:${jorn?0.5:1}" aria-label="Más">+</button></div></div>
+     <div class="grid2">
+      <label class="f">Cobras por hora (€)<input id="o-tarifa" class="inp num" type="number" inputmode="decimal" min="0" step="0.5" data-a="tarifaOperario" data-save="1" value="${num(A.tarifaOperario)}"></label>
+      <label class="f">Te cuesta por hora (€)<input id="o-coste" class="inp num" type="number" inputmode="decimal" min="0" step="0.5" data-a="costeOperario" data-save="1" value="${num(A.costeOperario)}"></label>
+     </div>
      <div><div style="${lbl}">Operarios</div>
       <div class="step"><button data-act="step" data-arg="ops:-1" aria-label="Menos">−</button><b class="num">${num(c.ops)}<small>${num(c.ops)===1?'operario':'operarios'}</small></b><button data-act="step" data-arg="ops:1" aria-label="Más">+</button></div></div>
      ${(o.maqs||[]).length?`<details><summary style="cursor:pointer;font-weight:600">Horas de cada máquina (si no son las mismas)</summary><div style="display:grid;gap:10px;margin-top:10px">${(o.maqs||[]).map((m,i)=>{const M=A.maquinas.find(x=>x.id===m.id);return M?`<div class="grid2"><label class="f">${esc(M.nombre)} (horas)<input id="o-mq-${i}-h" class="inp num" type="number" inputmode="decimal" min="0" step="0.5" data-k="ojo.maqs.${i}.horas" value="${m.horas??''}" placeholder="Las mismas"></label><label class="f">€/h<input id="o-mq-${i}-t" class="inp num" type="number" inputmode="decimal" min="0" step="any" data-k="ojo.maqs.${i}.tarifa" value="${(m.tarifa===''||m.tarifa==null)?M.tarifa:m.tarifa}"></label></div>`:''}).join('')}</div></details>`:''}
@@ -756,7 +760,12 @@ ajustes(){
   </section>
   <section class="card"><h2>Números de empresa</h2>
    <p class="muted small" style="margin:0">Para el «Precio de empresa». Coste real de un operario por hora: sueldo + Seguridad Social.</p>
-   <div class="grid2">${inp('Coste operario (€/h)','costeOperario','number')}${inp('Gastos generales (%)','gastosGenerales','number')}</div>
+   <div class="grid2">${inp('Cobras por hora y operario (€)','tarifaOperario','number')}${inp('Gastos generales (%)','gastosGenerales','number')}</div>
+   <div class="line-ed"><b>Coste de un operario</b>
+    <div class="grid2"><label class="f">Coste empresa al mes (€, de la nómina)<input id="a-cmes" class="inp num" type="number" inputmode="decimal" data-a="costeMes" data-nom="1" value="${num(A.costeMes)}"></label>
+     <label class="f">Horas trabajadas al año<input id="a-hano" class="inp num" type="number" inputmode="decimal" data-a="horasAno" data-nom="1" value="${num(A.horasAno)}"></label></div>
+    <label class="f">Coste real por hora (€)<input id="a-costeOperario" class="inp num" type="number" inputmode="decimal" step="any" data-a="costeOperario" value="${num(A.costeOperario)}"></label>
+    <p class="muted small" style="margin:0">Se calcula solo: coste al mes × 12 ÷ horas al año. Mira «COSTE EMPRESA» abajo en la nómina.</p></div>
    <div class="grid2">${inp('Beneficio competitivo (%)','beneficioComp','number')}${inp('Beneficio de empresa (%)','beneficio','number')}</div>
    <label class="f">Precio que sale por defecto<select id="a-modo" class="inp" data-a="modoPrecio">${[['competitivo','Competitivo (para ganar clientes)'],['empresa','Precio de empresa'],['tarifas','Por mis tarifas por hora']].map(([k,t])=>`<option value="${k}" ${A.modoPrecio===k?'selected':''}>${t}</option>`).join('')}</select></label>
    <label class="f">Desde dónde sales (para los km)<select id="a-base" class="inp" data-a="base">${LUGARES.map(l=>`<option ${A.base===l.n?'selected':''}>${esc(l.n)}</option>`).join('')}</select></label>
@@ -1150,6 +1159,8 @@ function onField(e){const t=e.target;
   if(t.dataset.x==='dict'){S.dict=t.value;return}
   if(t.dataset.f){setPath(S.form,t.dataset.f,val(t));return}
   if(t.dataset.a){const cur=getPath(S.aj,t.dataset.a);setPath(S.aj,t.dataset.a,(typeof cur==='number'||t.type==='number')?num(t.value):t.value);
+    if(t.dataset.nom){const h=num(S.aj.horasAno);if(h>0){S.aj.costeOperario=r2(num(S.aj.costeMes)*12/h);const e=document.getElementById('a-costeOperario');if(e)e.value=S.aj.costeOperario}}
+    if(t.dataset.save){S.precioFijo=null;updateResult();clearTimeout(window._ajt);window._ajt=setTimeout(()=>saveAj().catch(console.error),900);return}
     const m=t.dataset.a.match(/^maquinas\.(\d+)\.(gasoilDia|otrosDia)$/);
     if(m){const M=S.aj.maquinas[+m[1]];const d=num(M.gasoilDia)+num(M.otrosDia);if(d>0){M.tarifa=r2(d/Math.max(1,num(S.aj.jornada)));const e=document.getElementById('a-mq'+m[1]+'-t');if(e)e.value=M.tarifa}}
     return}
