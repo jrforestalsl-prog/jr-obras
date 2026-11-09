@@ -589,7 +589,6 @@ inicio(){
    <button class="stat" data-act="gotab" data-arg="factura"><small>Facturas por cobrar</small><b class="num">${fac.length}</b><span class="num">${eur(sum(fac))} €</span></button>
    <button class="stat" data-act="go" data-arg="trabajos"><small>Trabajos por hacer</small><b class="num">${trab.length}</b><span>${trab[0]&&trab[0].fecha?'Próximo: '+esc(fmtDate(trab[0].fecha)):'&nbsp;'}</span></button>
   </div>
-  ${vacaCard()}
   <section class="card"><div class="sec-title"><h2>Próximos trabajos</h2><button class="btn sm" data-act="trabedit" data-arg="">${svg('plus')}Añadir</button></div>
    ${trab.length?`<div class="list">${trab.slice(0,5).map(trabItem).join('')}</div>`:`<div class="empty">No tienes trabajos apuntados.<br>Cuando un cliente acepte un presupuesto, pulsa «Programar trabajo».</div>`}</section>
   <section class="card"><div class="sec-title"><h2>Últimos documentos</h2><button class="btn sm" data-act="go" data-arg="documentos">Ver todos</button></div>
@@ -602,6 +601,7 @@ calcular(){
   const comun=`<section class="card">
    <label class="f">Lugar de la obra<input id="c-lugar" class="inp" data-k="lugar" list="lugares" value="${esc(c.lugar)}" placeholder="Ej.: Lieres, Siero" autocomplete="off"><datalist id="lugares">${LUGARES.map(l=>`<option value="${esc(l.n)}"></option>`).join('')}</datalist><span id="lug-hint" class="small" style="font-weight:500">${lugHint()}</span></label>
    <label class="f">Cliente<select id="c-cli" class="inp" data-k="cliente">${cliOpts}</select></label>
+   <button class="btn" data-act="mapa" style="justify-content:center">${svg('map')}Ver y medir la parcela</button>
    <details><summary style="cursor:pointer;font-weight:600">Mapa, Catastro y km</summary><div style="display:grid;gap:10px;margin-top:10px">
     <label class="f">Referencia catastral<input id="c-ref" class="inp" data-k="refcat" value="${esc(c.refcat)}" placeholder="14 o 20 caracteres" autocomplete="off"></label>
     <div class="row"><a class="btn sm" id="lnk-cat" href="${ref.length>=14?'https://www1.sedecatastro.gob.es/Cartografia/mapa.aspx?refcat='+encodeURIComponent(ref):'https://www1.sedecatastro.gob.es/'}" target="_blank" rel="noopener">${svg('map')}Catastro</a>
@@ -772,12 +772,6 @@ ajustes(){
    <div class="row"><button class="btn" data-act="huellaon">${hGet()?'Volver a registrar huella':'Activar huella'}</button></div>
    <label class="f">Añadir otro móvil (pega su código)<input id="mv-code" class="inp" placeholder="Código que sale en el otro móvil"></label>
    <button class="btn sm" data-act="addmovil">Añadir móvil</button>
-  </section>
-  <section class="card" id="trab"><h2>Trabajadores y vacaciones</h2>
-   <p class="muted small" style="margin:0">Contrato en meses: pon 6 si es de 6 meses, o 0 si es fijo. Los días se van sumando solos.</p>
-   ${(A.trabajadores||[]).map((t,i)=>`<div class="line-ed"><div style="display:flex;gap:8px;align-items:end"><label class="f" style="flex:1">Nombre<input id="a-tb${i}-n" class="inp" data-a="trabajadores.${i}.nombre" value="${esc(t.nombre)}"></label><button class="btn sm danger" data-act="ajdel" data-arg="trabajadores:${i}" aria-label="Quitar">${svg('x')}</button></div>
-    <div class="grid3"><label class="f">Entró el<input id="a-tb${i}-e" class="inp" type="date" data-a="trabajadores.${i}.entrada" value="${esc(t.entrada||'')}"></label><label class="f">Contrato (meses)<input id="a-tb${i}-m" class="inp num" type="number" inputmode="decimal" min="0" data-a="trabajadores.${i}.meses" value="${num(t.meses)}"></label><label class="f">Días cogidos<input id="a-tb${i}-c" class="inp num" type="number" inputmode="decimal" min="0" step="0.5" data-a="trabajadores.${i}.cogidos" value="${num(vacas(t)?vacas(t).cogidos:t.cogidos)}"></label></div></div>`).join('')}
-   <button class="btn sm" data-act="ajadd" data-arg="trabajadores">${svg('plus')}Añadir trabajador</button>
   </section>
   <section class="card"><h2>Números de empresa</h2>
    <p class="muted small" style="margin:0">Para el «Precio de empresa». Coste real de un operario por hora: sueldo + Seguridad Social.</p>
@@ -1028,6 +1022,7 @@ async function safe(fn,ok){try{await fn();if(ok)toast(ok)}catch(e){console.error
 
 /* ---------- Acciones ---------- */
 const ACT={
+ mapa(){const c=S.calc;abrirMapa({refcat:c.refcat,lugar:c.lugar,sep:num(c.cerc.sep)||3,onUse(r){S.precioFijo=null;c.cerc.m=Math.round(r.m);c.cerc.sep=r.sep;if(r.m2&&c.zonas&&c.zonas[0])c.zonas[0].m2=Math.round(r.m2);render();toast(`${Math.round(r.m)} m · ${r.postes} postes${r.m2?' · '+Math.round(r.m2).toLocaleString('es-ES')+' m²':''}`)}})},
  go(a){S.view=a;S.buscar='';closeSheet();render();window.scrollTo(0,0)},
  gotab(a){S.view='documentos';S.docTab=a;S.buscar='';render()},
  tfil(a){S.trabFiltro=a;render()},
@@ -1335,6 +1330,7 @@ async function paginaFirma(token){
 }
 </script>
 
+<script src="mapa.js"></script>
 <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js',{scope:'./'}).catch(console.error)</script>
 </body>
 </html>
