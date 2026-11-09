@@ -305,7 +305,7 @@ const DEF={
  numeracion:{factura:1,presupuesto:1},
  iva:21,redondeo:5,kmPrecio:0.4,minimo:60,tarifaOperario:30,jornada:8,
  licit:{zona:'Asturias',servicios:'desbroce, limpieza de montes y fincas, tala, poda, cercados y vallados, movimiento de tierras, jardinería, reforestación, prevención de incendios',importeMax:150000,solvencia:'Empresa forestal con 5 trabajadores y maquinaria propia'},
- costeOperario:17,gastosGenerales:15,beneficio:15,beneficioComp:8,modoPrecio:'competitivo',base:'Pajares (Lena)',
+ costeOperario:15,costeVer:2,gastosGenerales:15,beneficio:15,beneficioComp:8,modoPrecio:'competitivo',base:'Pajares (Lena)',
  serviciosMaq:{'Desbroce':['desbro'],'Podas y talas':['motos','plataf','astill'],'Movimiento de tierras':['excav','dumper','camion'],'Obra civil y construcción':['mini','dumper','camion'],'Cercados y vallados':['mini'],'Venta de leña':['camion']},
  serviciosProd:{'Venta de leña':['lena'],'Cercados y vallados':['poste','malla'],'Reforestación':['planta']},
  servicios:['Desbroce','Podas y talas','Rebaje / recorte de seto','Cercados y vallados','Movimiento de tierras','Obra civil y construcción','Jardinería','Reforestación','Venta de leña','Otro'],
@@ -1243,6 +1243,7 @@ function iniciarDueño(){
     const err=e=>{console.error(e);clearTimeout(timer);S.loaded=true;S.slow=false;S.dbOk=false;render()};
     db.doc('ajustes/general').onSnapshot(s=>{S.aj=merge(clone(DEF),s.exists?clone(s.data()):{});S.aj.cercado.tipos.forEach(t=>{const d=DEF.cercado.tipos.find(x=>x.id===t.id);if(d){if(!t.receta)t.receta=clone(d.receta);if(!t.sep)t.sep=d.sep}});
       if(!s.exists&&!s.metadata.fromCache){db.doc('ajustes/general').set(JSON.parse(JSON.stringify(S.aj))).catch(console.error)}
+      else if(s.exists&&!s.metadata.fromCache&&!(s.data()||{}).costeVer){S.aj.costeOperario=15;S.aj.costeVer=2;db.doc('ajustes/general').update({costeOperario:15,costeVer:2}).catch(console.error)}
       done('aj',s);if(S.view!=='ajustes'||!S.loaded)render()},err);
     db.doc('licit/ultima').get().then(x=>{if(x.exists&&!S.licit){S.licit=x.data();render()}}).catch(console.error);
     db.collection('clientes').onSnapshot(q=>{S.clientes=q.docs.map(d=>({id:d.id,...d.data()}));done('cli',q);render()},err);
