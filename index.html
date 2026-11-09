@@ -306,6 +306,7 @@ const DEF={
  numeracion:{factura:1,presupuesto:1},
  iva:21,redondeo:5,kmPrecio:0.4,minimo:60,tarifaOperario:30,jornada:8,
  licit:{zona:'Asturias',servicios:'desbroce, limpieza de montes y fincas, tala, poda, cercados y vallados, movimiento de tierras, jardinería, reforestación, prevención de incendios',importeMax:150000,solvencia:'Empresa forestal con 5 trabajadores y maquinaria propia'},
+ trabajadores:[{id:'sergio',nombre:'Sergio',entrada:'2026-02-12',meses:0,cogidos:0,cogAno:2026},{id:'ruben',nombre:'Rubén',entrada:'2026-09-07',meses:6,cogidos:0},{id:'hermo',nombre:'Hermógenes',entrada:'2026-09-07',meses:6,cogidos:0},{id:'angel',nombre:'Ángel',entrada:'2026-09-07',meses:6,cogidos:0}],
  costeOperario:15,costeVer:2,costeMes:2140,horasAno:1700,gastosGenerales:15,beneficio:15,beneficioComp:8,modoPrecio:'competitivo',base:'Pajares (Lena)',
  serviciosMaq:{'Desbroce':['desbro'],'Podas y talas':['motos','plataf','astill'],'Movimiento de tierras':['excav','dumper','camion'],'Obra civil y construcción':['mini','dumper','camion'],'Cercados y vallados':['mini'],'Venta de leña':['camion']},
  serviciosProd:{'Venta de leña':['lena'],'Cercados y vallados':['poste','malla'],'Reforestación':['planta']},
@@ -405,6 +406,20 @@ async function del(col,id){
 }
 async function saveAj(){if(db)await db.doc('ajustes/general').set(S.aj);else render()}
 function strip(o){const c={...o};delete c.id;return c}
+
+/* ---------- Vacaciones: 30 días al año (2,5 por mes) ---------- */
+function vacas(t){const D=s=>new Date(s+'T12:00'),dias=(a,b)=>Math.round((b-a)/864e5);const hoy=D(today());const medio=x=>Math.floor(x*2)/2;
+  if(!t.entrada)return null;const ent=D(t.entrada);const m=num(t.meses);
+  if(m>0){const fin=new Date(ent);fin.setMonth(fin.getMonth()+m);const total=r2(2.5*m);const dur=Math.max(1,dias(ent,fin));
+    const pas=Math.min(dur,Math.max(0,dias(ent,hoy)));const cog=num(t.cogidos);
+    return{total,ganados:medio(total*pas/dur),cogidos:cog,quedan:r2(total-cog),texto:`Contrato de ${fx(m)} meses · hasta ${fmtDate(iso(fin))}`,acabado:hoy>=fin}}
+  const Y=hoy.getFullYear(),ini=ent>D(Y+'-01-01')?ent:D(Y+'-01-01'),fin=D(Y+'-12-31');
+  const total=Math.ceil(30*(dias(ini,fin)+1)/365);const cog=num(t.cogAno)===Y?num(t.cogidos):0;
+  return{total,ganados:medio(Math.min(total,30*Math.max(0,dias(ini,hoy))/365)),cogidos:cog,quedan:r2(total-cog),texto:`Fijo · vacaciones de ${Y}`,acabado:false}}
+function vacaCard(){const L=(S.aj.trabajadores||[]).map(t=>[t,vacas(t)]).filter(x=>x[1]);
+  return `<section class="card"><div class="sec-title"><h2>Vacaciones</h2><button class="btn sm" data-act="go" data-arg="ajustes">Editar</button></div>
+   ${L.length?`<div class="list">${L.map(([t,v])=>`<div class="item"><div class="main"><b>${esc(t.nombre||'Trabajador')}</b><span>${esc(v.texto)}</span><span>Ganados hasta hoy: ${fx(v.ganados)} · Cogidos: ${fx(v.cogidos)}</span></div><div class="side"><b class="num">${fx(v.quedan)} días</b><span class="pill ${v.acabado?'p-bad':v.quedan>0?'p-info':'p-ok'}">${v.acabado?'Contrato acabado':'le quedan de '+fx(v.total)}</span></div></div>`).join('')}</div>`
+   :`<div class="empty">Añade a tus trabajadores en Ajustes.</div>`}</section>`}
 
 /* ---------- Cálculos ---------- */
 function redondea(n){const r=num(S.aj.redondeo);return r>0?Math.round(n/r)*r:r2(n)}
@@ -574,6 +589,7 @@ inicio(){
    <button class="stat" data-act="gotab" data-arg="factura"><small>Facturas por cobrar</small><b class="num">${fac.length}</b><span class="num">${eur(sum(fac))} €</span></button>
    <button class="stat" data-act="go" data-arg="trabajos"><small>Trabajos por hacer</small><b class="num">${trab.length}</b><span>${trab[0]&&trab[0].fecha?'Próximo: '+esc(fmtDate(trab[0].fecha)):'&nbsp;'}</span></button>
   </div>
+  ${vacaCard()}
   <section class="card"><div class="sec-title"><h2>Próximos trabajos</h2><button class="btn sm" data-act="trabedit" data-arg="">${svg('plus')}Añadir</button></div>
    ${trab.length?`<div class="list">${trab.slice(0,5).map(trabItem).join('')}</div>`:`<div class="empty">No tienes trabajos apuntados.<br>Cuando un cliente acepte un presupuesto, pulsa «Programar trabajo».</div>`}</section>
   <section class="card"><div class="sec-title"><h2>Últimos documentos</h2><button class="btn sm" data-act="go" data-arg="documentos">Ver todos</button></div>
@@ -756,6 +772,12 @@ ajustes(){
    <div class="row"><button class="btn" data-act="huellaon">${hGet()?'Volver a registrar huella':'Activar huella'}</button></div>
    <label class="f">Añadir otro móvil (pega su código)<input id="mv-code" class="inp" placeholder="Código que sale en el otro móvil"></label>
    <button class="btn sm" data-act="addmovil">Añadir móvil</button>
+  </section>
+  <section class="card" id="trab"><h2>Trabajadores y vacaciones</h2>
+   <p class="muted small" style="margin:0">Contrato en meses: pon 6 si es de 6 meses, o 0 si es fijo. Los días se van sumando solos.</p>
+   ${(A.trabajadores||[]).map((t,i)=>`<div class="line-ed"><div style="display:flex;gap:8px;align-items:end"><label class="f" style="flex:1">Nombre<input id="a-tb${i}-n" class="inp" data-a="trabajadores.${i}.nombre" value="${esc(t.nombre)}"></label><button class="btn sm danger" data-act="ajdel" data-arg="trabajadores:${i}" aria-label="Quitar">${svg('x')}</button></div>
+    <div class="grid3"><label class="f">Entró el<input id="a-tb${i}-e" class="inp" type="date" data-a="trabajadores.${i}.entrada" value="${esc(t.entrada||'')}"></label><label class="f">Contrato (meses)<input id="a-tb${i}-m" class="inp num" type="number" inputmode="decimal" min="0" data-a="trabajadores.${i}.meses" value="${num(t.meses)}"></label><label class="f">Días cogidos<input id="a-tb${i}-c" class="inp num" type="number" inputmode="decimal" min="0" step="0.5" data-a="trabajadores.${i}.cogidos" value="${num(vacas(t)?vacas(t).cogidos:t.cogidos)}"></label></div></div>`).join('')}
+   <button class="btn sm" data-act="ajadd" data-arg="trabajadores">${svg('plus')}Añadir trabajador</button>
   </section>
   <section class="card"><h2>Números de empresa</h2>
    <p class="muted small" style="margin:0">Para el «Precio de empresa». Coste real de un operario por hora: sueldo + Seguridad Social.</p>
@@ -1076,8 +1098,8 @@ Devuelve este JSON (usa null en lo que no diga):
   window.open('https://wa.me/'+(tel||'')+'?text='+encodeURIComponent(txt),'_blank')},
  maqtog(a){const o=S.calc.ojo;o.maqs=o.maqs||[];const i=o.maqs.findIndex(m=>m.id===a);if(i>=0)o.maqs.splice(i,1);else o.maqs.push({id:a,horas:''});render()},
  prodtog(a){const o=S.calc.ojo;o.prods=o.prods||[];const i=o.prods.findIndex(p=>p.id===a);if(i>=0)o.prods.splice(i,1);else o.prods.push({id:a,cant:1});render()},
- ajadd(a){if(a==='maquinas')S.aj.maquinas.push({id:uid(),nombre:'Nueva máquina',modelo:'',gasoilDia:0,otrosDia:0,tarifa:0});else if(a==='productos')S.aj.productos.push({id:uid(),nombre:'Nuevo producto',unidad:'ud',precio:0});else S.aj.servicios.push('Nuevo servicio');render()},
- ajdel(a){const [k,i]=a.split(':');S.aj[k].splice(+i,1);render()},
+ ajadd(a){if(a==='trabajadores'){(S.aj.trabajadores=S.aj.trabajadores||[]).push({id:uid(),nombre:'',entrada:today(),meses:6,cogidos:0});saveAj().catch(console.error);render();return}if(a==='maquinas')S.aj.maquinas.push({id:uid(),nombre:'Nueva máquina',modelo:'',gasoilDia:0,otrosDia:0,tarifa:0});else if(a==='productos')S.aj.productos.push({id:uid(),nombre:'Nuevo producto',unidad:'ud',precio:0});else S.aj.servicios.push('Nuevo servicio');render()},
+ ajdel(a){const [k,i]=a.split(':');S.aj[k].splice(+i,1);if(k==='trabajadores')saveAj().catch(console.error);render()},
  usarsug(a){S.calc.ojo.horas=num(a);S.calc.ojo.unidad='horas';render()},
  zadd(){const z=S.calc.zonas.at(-1);S.calc.zonas.push({...z,m2:500});render()},
  zdel(a){S.calc.zonas.splice(+a,1);render()},
@@ -1164,6 +1186,8 @@ function onField(e){const t=e.target;
   if(t.dataset.f){setPath(S.form,t.dataset.f,val(t));return}
   if(t.dataset.a){const cur=getPath(S.aj,t.dataset.a);setPath(S.aj,t.dataset.a,(typeof cur==='number'||t.type==='number')?num(t.value):t.value);
     if(t.dataset.nom){const h=num(S.aj.horasAno);if(h>0){S.aj.costeOperario=r2(num(S.aj.costeMes)*12/h);const e=document.getElementById('a-costeOperario');if(e)e.value=S.aj.costeOperario}}
+    const tb=t.dataset.a.match(/^trabajadores\.(\d+)\.(\w+)$/);
+    if(tb){if(tb[2]==='cogidos')S.aj.trabajadores[+tb[1]].cogAno=new Date().getFullYear();clearTimeout(window._ajt);window._ajt=setTimeout(()=>saveAj().catch(console.error),900);return}
     if(t.dataset.save){S.precioFijo=null;updateResult();clearTimeout(window._ajt);window._ajt=setTimeout(()=>saveAj().catch(console.error),900);return}
     const m=t.dataset.a.match(/^maquinas\.(\d+)\.(gasoilDia|otrosDia)$/);
     if(m){const M=S.aj.maquinas[+m[1]];const d=num(M.gasoilDia)+num(M.otrosDia);if(d>0){M.tarifa=r2(d/Math.max(1,num(S.aj.jornada)));const e=document.getElementById('a-mq'+m[1]+'-t');if(e)e.value=M.tarifa}}
