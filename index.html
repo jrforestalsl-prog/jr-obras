@@ -709,31 +709,27 @@ trabajos(){
    ${list.length?`<div class="list">${list.map(trabItem).join('')}</div>`:`<div class="empty">No hay trabajos aquí.</div>`}`;
 },
 licitaciones(){
-  const L=S.aj.licit||{};const r=S.licit;const disp=!!window.LICIT;
-  const pillV=v=>{const t=String(v||'').toLowerCase();return t.startsWith('s')?'<span class="pill p-ok">Te encaja</span>':t.startsWith('n')?'<span class="pill p-bad">No encaja</span>':'<span class="pill p-pend">Revisar</span>'};
-  const dias=f=>{const d=new Date(f);if(isNaN(d))return'';const n=Math.ceil((d-new Date())/864e5);return n<0?'<span class="pill p-bad">Cerrada</span>':n<=7?`<span class="pill p-bad">Quedan ${n} días</span>`:`<span class="pill p-info">Quedan ${n} días</span>`};
-  return `${statusNote()}<div class="sec-title"><h1>Licitaciones</h1></div>
-   <section class="card"><h2>Qué buscas</h2>
-    <label class="f">Zona<input id="li-zona" class="inp" data-a="licit.zona" value="${esc(L.zona||'')}"></label>
-    <label class="f">Trabajos que te interesan<textarea id="li-serv" class="inp" rows="2" data-a="licit.servicios">${esc(L.servicios||'')}</textarea></label>
+  const L=S.aj.licit||{};const r=S.licit;const max=num(L.importeMax)||Infinity;
+  if(!r&&!S.licitBusy)setTimeout(()=>ACT.buscarlicit(),0);
+  const palabras=norm(L.servicios||'').split(/[,;\n]+/).map(x=>x.trim()).filter(x=>x.length>2);
+  const dias=f=>{const d=new Date(f+'T23:59');if(isNaN(d))return'';const n=Math.ceil((d-new Date())/864e5);return n<0?'<span class="pill p-bad">Cerrada</span>':n<=7?`<span class="pill p-bad">Quedan ${n} días</span>`:`<span class="pill p-info">Quedan ${n} días</span>`};
+  const items=(r&&r.items||[]).filter(x=>!S.licitSolo||palabras.some(w=>norm(x.titulo).includes(w.split(' ')[0])));
+  return `${statusNote()}<div class="sec-title"><h1>Licitaciones</h1><button class="btn sm" data-act="buscarlicit">${S.licitBusy?'Cargando…':'Actualizar'}</button></div>
+   <p class="muted small" style="margin:0">Licitaciones abiertas en Asturias de la Plataforma de Contratación del Estado. Se actualizan solas cada mañana.${r&&r.actualizado?` Última: ${esc(new Date(r.actualizado).toLocaleString('es-ES'))}.`:''}</p>
+   ${S.licitError?`<div class="notice" style="background:var(--bad-soft);color:var(--bad)">${esc(S.licitError)}</div>`:''}
+   <details class="card" style="gap:10px"><summary style="cursor:pointer;font-weight:700">Qué te interesa</summary>
+    <label class="f">Trabajos (separados por comas)<textarea id="li-serv" class="inp" rows="2" data-a="licit.servicios">${esc(L.servicios||'')}</textarea></label>
     <div class="grid2"><label class="f">Importe máximo (€)<input id="li-max" class="inp num" type="number" inputmode="decimal" data-a="licit.importeMax" value="${num(L.importeMax)}"></label><div></div></div>
-    <label class="f">Tu empresa (solvencia, clasificación…)<textarea id="li-solv" class="inp" rows="2" data-a="licit.solvencia">${esc(L.solvencia||'')}</textarea></label>
-    ${S.licitError?`<div class="notice" style="background:var(--bad-soft);color:var(--bad)"><b>Error:</b> ${esc(S.licitError)}</div>`:''}
-    <button class="btn pri" data-act="buscarlicit" id="btn-licit" ${S.licitBusy?'disabled':''}>${S.licitBusy?'Buscando… (puede tardar 1 minuto)':svg('search')+'Buscar licitaciones'}</button>
-    ${disp?'':'<p class="muted small" style="margin:0">La búsqueda funciona en tu app instalada (jrforestalsl-prog.github.io/jr-obras).</p>'}
-   </section>
-   ${r?`<p class="muted small" style="margin:0">Búsqueda del ${esc(new Date(r.fecha).toLocaleString('es-ES'))}. ${r.items.length} resultado${r.items.length===1?'':'s'}. Revisa siempre el pliego oficial antes de presentarte.</p>
-    ${r.items.length?r.items.map((x,i)=>`<section class="card" style="gap:8px">
-      <div style="display:flex;justify-content:space-between;gap:8px;align-items:start"><span class="tag">${esc(x.organismo||'')}</span>${pillV(x.encaja)}</div>
-      <h2 style="font-size:20px">${esc(x.titulo||'')}</h2>
-      <div class="row small" style="gap:8px;align-items:center">${x.lugar?`<span>${esc(x.lugar)}</span>`:''}${x.importe?`<b class="num">${eur0(num(x.importe))} €</b>`:''}${x.plazo?`<span>Hasta ${esc(fmtDate(String(x.plazo).slice(0,10))||x.plazo)}</span>${dias(x.plazo)}`:''}</div>
-      ${x.resumen?`<p style="margin:0">${esc(x.resumen)}</p>`:''}
-      ${x.motivo?`<p class="small muted" style="margin:0"><b>¿Puedes?</b> ${esc(x.motivo)}</p>`:''}
-      ${x.requisitos?`<p class="small muted" style="margin:0"><b>Piden:</b> ${esc(x.requisitos)}</p>`:''}
-      ${x.beneficio!=null&&x.beneficio!==''?`<div class="notice" style="background:var(--pine-soft);color:var(--pine)"><b>Beneficio estimado: ${eur0(num(x.beneficio))} €</b>${x.coste?` · coste estimado ${eur0(num(x.coste))} €`:''}${x.calculo?`<br><span class="small">${esc(x.calculo)}</span>`:''}</div>`:''}
+    <label class="check"><input id="li-solo" type="checkbox" data-x="licitsolo" ${S.licitSolo?'checked':''}>Solo las que nombran esos trabajos</label>
+    <button class="btn sm pri" data-act="saveaj">Guardar</button></details>
+   ${r?(items.length?items.map((x,i)=>{const ok=x.importe==null||num(x.importe)<=max;return `<section class="card" style="gap:8px">
+      <div style="display:flex;justify-content:space-between;gap:8px;align-items:start"><span class="tag">${esc(x.organismo||'')}</span>${ok?'<span class="pill p-ok">Te encaja</span>':'<span class="pill p-pend">Supera tu importe</span>'}</div>
+      <h2 style="font-size:19px">${esc(x.titulo||'')}</h2>
+      <div class="row small" style="gap:8px;align-items:center">${x.lugar?`<span>${esc(x.lugar)}</span>`:''}${x.importe!=null?`<b class="num">${eur0(num(x.importe))} € sin IVA</b>`:''}${x.plazo?`<span>Hasta ${esc(fmtDate(x.plazo))}</span>${dias(x.plazo)}`:''}</div>
+      ${x.importe!=null?`<p class="small muted" style="margin:0">Para ganar un ${fx(S.aj.beneficio)} %, tu coste tiene que quedar por debajo de <b>${eur0(num(x.importe)/(1+num(S.aj.beneficio)/100))} €</b>. Pulsa «Calcularla yo» y te digo lo que ganarías.</p>`:''}
       <div class="row">${x.enlace?`<a class="btn sm pri" href="${esc(x.enlace)}" target="_blank" rel="noopener">Ver licitación</a>`:''}<button class="btn sm" data-act="licit2calc" data-arg="${i}">Calcularla yo</button></div>
-     </section>`).join(''):'<div class="empty">No he encontrado licitaciones abiertas con esos datos. Prueba a ampliar la zona o los trabajos.</div>'}`
-   :`<div class="empty">Pulsa «Buscar licitaciones» y te traigo las que están abiertas ahora, con resumen, si te encajan y el beneficio estimado.</div>`}`;
+     </section>`}).join(''):`<div class="empty">${r.actualizado?'Ahora mismo no hay licitaciones abiertas de lo tuyo en Asturias. Mañana se vuelven a buscar solas.':'La primera búsqueda se está haciendo. Vuelve en unos minutos.'}</div>`)
+   :`<div class="empty">Cargando licitaciones…</div>`}`;
 },
 ajustes(){
   const A=S.aj,E=A.empresa;
@@ -856,6 +852,10 @@ function updateResult(){
       ${P.map((x,i)=>`<div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span>${esc(x.nombre)}</span><span class="num">${eur0(x.precio)} € <button class="btn sm ghost" style="min-height:30px;padding:2px 8px" data-act="delparte" data-arg="${i}" aria-label="Quitar">✕</button></span></div>`).join('')}
       <div style="display:flex;justify-content:space-between"><span>${esc((TRABAJOS.find(t=>t.id===S.calc.sel)||{}).n||'Este trabajo')} (ahora)</span><span class="num">${eur0(R.precio)} €</span></div>
       <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.4);padding-top:6px;font-size:20px;font-weight:700"><span>Total obra</span><span class="num">${eur0(tot)} € + IVA</span></div></div>`})()}
+   ${S.calc.licitImporte!=null&&R.emp?(()=>{const imp=S.calc.licitImporte,g=r2(imp-R.emp.costeReal);return `<div style="background:#fff;color:#1C1E21;border-radius:12px;padding:12px;display:grid;gap:4px"><span class="tag">Licitación: ${esc(S.calc.licitTitulo||'')}</span>
+     <div style="display:flex;justify-content:space-between"><span>Importe de la licitación</span><b class="num">${eur0(imp)} €</b></div>
+     <div style="display:flex;justify-content:space-between"><span>Tu coste real</span><b class="num">${eur0(R.emp.costeReal)} €</b></div>
+     <div style="display:flex;justify-content:space-between;font-size:18px"><span>Ganarías</span><b class="num" style="color:${g>=0?'#1E8A4C':'#C0331F'}">${eur0(g)} €</b></div></div>`})():''}
    <button class="btn ghost" data-act="addparte">${svg('plus')}Añadir otro trabajo a esta obra</button>
    <div class="row"><button class="btn" data-act="calc2doc">${svg('doc')}Crear presupuesto</button><button class="btn ghost" data-act="calccopy">${svg('copy')}Copiar mensaje</button></div>`;
   const ref=(S.calc.refcat||'').replace(/\s/g,'');const lc=$('#lnk-cat'),lm=$('#lnk-map');
@@ -1039,20 +1039,12 @@ Devuelve este JSON (usa null en lo que no diga):
  async kguardar(){const k=S.calc.cerc;const nombre=(document.getElementById('k-nombre-tipo')||{}).value;
   const T=ctipo(k.tipo);const nuevo={id:'u'+uid(),nombre:(T.nombre+' (mío)'),h:num(k.hm),sep:num(k.sep),receta:[],lineasPropias:clone(k.lineas||[]),maqs:clone(k.maqs||[])};
   S.aj.cercado.tipos.push(nuevo);k.tipo=nuevo.id;await safe(saveAj,'Guardado como tipo de cierre. Cámbiale el nombre en Ajustes.');render()},
- async buscarlicit(){if(!window.LICIT){toast('La búsqueda funciona en tu app instalada.');return}
-  S.licitBusy=true;S.licitError='';render();const A=S.aj,L=A.licit||{};
-  const hoy=new Date().toISOString().slice(0,10);
-  const prompt=`Hoy es ${hoy}. Busca en internet licitaciones públicas ABIERTAS (plazo de presentación no vencido) en ${L.zona||'Asturias'} para estos trabajos: ${L.servicios}. Mira sobre todo la Plataforma de Contratación del Sector Público (contrataciondelestado.es), el portal de contratación del Principado de Asturias y los perfiles del contratante de ayuntamientos. Importe máximo: ${num(L.importeMax)} euros.
-Empresa que se presentaría: ${L.solvencia}. Maquinaria: ${A.maquinas.map(m=>m.nombre).join(', ')}. Coste real de un operario: ${A.costeOperario} €/h; gastos generales ${A.gastosGenerales} %; jornada de ${A.jornada} h.
-Para cada licitación real que encuentres (máximo 8, solo las que existan de verdad, NO inventes ninguna), responde SOLO con un array JSON con objetos así:
-{"titulo":"","organismo":"","lugar":"","importe":número sin IVA o null,"plazo":"AAAA-MM-DD fecha límite de presentación","enlace":"url oficial","resumen":"qué hay que hacer, en 1-2 frases sencillas","requisitos":"solvencia o clasificación que piden, si se sabe","encaja":"si" | "revisar" | "no","motivo":"por qué puede o no puede presentarse esta empresa","coste":número estimado de lo que le costaría hacerlo o null,"beneficio":número estimado (importe - coste) o null,"calculo":"cómo has estimado el coste, en una frase"}
-Si no encuentras ninguna, responde [].`;
-  try{const items=await window.LICIT(prompt);S.licit={fecha:Date.now(),items:Array.isArray(items)?items:[]};
-    if(db){try{await db.collection('licit').doc('ultima').set(JSON.parse(JSON.stringify(S.licit)))}catch(e){console.error(e)}}}
-  catch(e){console.error(e);S.licitError=String((e&&(e.message||e.code))||e).slice(0,300);toast('No se ha podido buscar.')}
-  S.licitBusy=false;render()},
+ async buscarlicit(){S.licitBusy=true;S.licitError='';if(S.view==='licitaciones')render();
+  try{const r=await fetch('licitaciones.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);S.licit=await r.json()}
+  catch(e){console.error(e);S.licitError='No se han podido cargar las licitaciones. Revisa internet.';S.licit=S.licit||{actualizado:null,items:[]}}
+  S.licitBusy=false;if(S.view==='licitaciones')render()},
  licit2calc(a){const x=(S.licit&&S.licit.items||[])[+a];if(!x)return;const o=S.calc.ojo;S.calc.modo='ojo';S.calc.lugar=x.lugar||'';const L=findLugar(x.lugar);if(L)S.calc.km=kmDesde(L);
-  o.desc=x.titulo+(x.resumen?'\n'+x.resumen:'');S.calc.sel=S.calc.sel||'otro';S.view='calcular';render();window.scrollTo(0,0)},
+  o.desc=x.titulo+(x.resumen?'\n'+x.resumen:'');S.calc.licitImporte=x.importe!=null?num(x.importe):null;S.calc.licitTitulo=x.titulo;S.calc.sel=S.calc.sel||'otro';S.view='calcular';render();window.scrollTo(0,0)},
  selwork(a){const T=TRABAJOS.find(t=>t.id===a);if(!T)return;const c=S.calc;c.sel=a;S.precioFijo=null;S.verTodas=false;
   if(T.modo){c.modo=T.modo;if(T.modo==='seto')c.seto.tipo='rebaje'}else{c.modo='ojo';sugerirEquipo(T.serv);c.ojo.maqs=[]}
   render();window.scrollTo(0,0)},
@@ -1158,6 +1150,7 @@ function onField(e){const t=e.target;
   if(t.dataset.d==='desglose'){S.draft.desglose=t.checked;openDocEditor();return}
   if(t.dataset.d){setPath(S.draft,t.dataset.d,val(t));const el=$('#dtot');if(el)el.innerHTML=totHTML(S.draft);return}
   if(t.dataset.x==='dict'){S.dict=t.value;return}
+  if(t.dataset.x==='licitsolo'){S.licitSolo=t.checked;render();return}
   if(t.dataset.f){setPath(S.form,t.dataset.f,val(t));return}
   if(t.dataset.a){const cur=getPath(S.aj,t.dataset.a);setPath(S.aj,t.dataset.a,(typeof cur==='number'||t.type==='number')?num(t.value):t.value);
     if(t.dataset.nom){const h=num(S.aj.horasAno);if(h>0){S.aj.costeOperario=r2(num(S.aj.costeMes)*12/h);const e=document.getElementById('a-costeOperario');if(e)e.value=S.aj.costeOperario}}
