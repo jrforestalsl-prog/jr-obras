@@ -1,7 +1,7 @@
 {
  "name": "JR - OBRAS",
  "short_name": "JR Obras",
- "start_url": "./",
+ "start_url": "./?app=1",
  "scope": "./",
  "display": "standalone",
  "background_color": "#F0F2F5",
@@ -26,6 +26,6 @@
    "purpose": "maskable"
   }
  ],
- "id": "./",
+ "id": "jr-obras-app",
  "description": "Presupuestos y obras de Jr Forestal"
 }
