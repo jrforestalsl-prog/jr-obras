@@ -51,10 +51,9 @@
     try{await leaflet()}catch(e){msg('No se pudo cargar el mapa. Mira si tienes internet.');ov.querySelector('[data-m=close]').onclick=cerrar;return}
     const map=L.map($('#mp-map'),{zoomControl:true,attributionControl:true,maxZoom:22}).setView([43.36,-5.85],9);
     // Foto aérea del IGN pedida en tiempo real (WMS): se ve a su máxima resolución y nítida en pantallas de móvil.
-    const R=Math.min(2,window.devicePixelRatio||1),T=Math.round(256*R);
-    const pnoa=L.tileLayer.wms('https://www.ign.es/wms-inspire/pnoa-ma',{layers:'OI.OrthoimageCoverage',format:'image/jpeg',version:'1.3.0',tileSize:T,zoomOffset:R>1?-1:0,maxZoom:22,attribution:'PNOA © IGN'}).addTo(map);
+    const pnoa=L.tileLayer.wms('https://www.ign.es/wms-inspire/pnoa-ma',{layers:'OI.OrthoimageCoverage',format:'image/jpeg',version:'1.3.0',detectRetina:true,maxZoom:22,attribution:'PNOA © IGN'}).addTo(map);
     const esri=L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:22,maxNativeZoom:19,detectRetina:true,attribution:'© Esri'});
-    const cat=L.tileLayer.wms('https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx',{layers:'Catastro',format:'image/png',transparent:true,version:'1.1.1',tileSize:T,zoomOffset:R>1?-1:0,maxZoom:22,attribution:'© Catastro'}).addTo(map);
+    const cat=L.tileLayer.wms('https://ovc.catastro.meh.es/Cartografia/WMS/ServidorWMS.aspx',{layers:'Catastro',format:'image/png',transparent:true,version:'1.1.1',detectRetina:true,maxZoom:22,attribution:'© Catastro'}).addTo(map);
     L.control.layers({'Foto aérea IGN (mejor)':pnoa,'Satélite Esri':esri},{'Lindes del Catastro':cat},{position:'topright'}).addTo(map);
 
     let pts=[],linde=null;const capa=L.layerGroup().addTo(map);
