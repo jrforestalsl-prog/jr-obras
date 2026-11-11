@@ -1,6 +1,20 @@
 {
- "actualizado": "2026-11-10T06:57:36Z",
+ "actualizado": "2026-11-11T08:34:50Z",
  "items": [
+  {
+   "titulo": "Suministro de gases industriales y especiales en botellas en régimen de alquiler y el servicio de mantenimiento de las instalaciones de gases en el centro de tratamiento de residuos de Cogersa.",
+   "organismo": "Consejo de Administración de la Compañía para la Gestión de Residuos Sólidos en Asturias S.A.",
+   "lugar": "Oviedo, Serín (Gijón), Asturias",
+   "importe": 105474.0,
+   "plazo": "2026-11-11",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=OFv4NnrUZG%2Fua%2Fi14w%2FPLA%3D%3D",
+   "cpv": [
+    "24110000",
+    "50531200"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-10"
+  },
   {
    "titulo": "Suministro e instalación de butacas en la sala Frontón Cinema, según proyecto técnico redactado por el Arquitecto D. Jesús Nieto Criado",
    "organismo": "Alcaldía del Ayuntamiento de Nava de la Asunción",
@@ -69,35 +83,6 @@
     "45331000",
     "42511110",
     "45331000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-10-27"
-  },
-  {
-   "titulo": "Suministro de gases industriales y especiales en botellas en régimen de alquiler y el servicio de mantenimiento de las instalaciones de gases en el centro de tratamiento de residuos de Cogersa.",
-   "organismo": "Consejo de Administración de la Compañía para la Gestión de Residuos Sólidos en Asturias S.A.",
-   "lugar": "Oviedo, Serín (Gijón), Asturias",
-   "importe": 105474.0,
-   "plazo": "2026-11-11",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=OFv4NnrUZG%2Fua%2Fi14w%2FPLA%3D%3D",
-   "cpv": [
-    "24110000",
-    "50531200"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-10-27"
-  },
-  {
-   "titulo": "El objeto es establecer las condiciones técnicas que regirán el contrato para el suministro, instalación y puesta en marcha de la infraestructura de red LAN e inalámbrica wifi necesaria, en la Fundación FASAD M.P.",
-   "organismo": "Fundación Asturiana de Atención y Protección a Personas con Discapacidades y o Dependencias (FASAD) M.P.",
-   "lugar": "Oviedo, Asturias",
-   "importe": 116596.48,
-   "plazo": "2026-11-11",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=M4Vo%2BKs6rFZ6nTs9LZ9RhQ%3D%3D",
-   "cpv": [
-    "64000000",
-    "64221000",
-    "64200000"
    ],
    "estado": "PUB",
    "publicado": "2026-10-27"
@@ -218,19 +203,6 @@
    "publicado": "2026-10-28"
   },
   {
-   "titulo": "Obras de Envolvente de la maquinaria (Filtración de aire) y chimenea, en el C.I.F.P. de Avilés",
-   "organismo": "Consejería de Educación",
-   "lugar": "Oviedo, Asturias",
-   "importe": 64141.0,
-   "plazo": "2026-11-13",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=Znc2b6%2FCm2ceIBJRHQiPkQ%3D%3D",
-   "cpv": [
-    "45260000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-10-27"
-  },
-  {
    "titulo": "Instalación De Nuevo Vallado Perimetral De Seguridad En El Aeropuerto De Asturias",
    "organismo": "Aena. Dirección del Aeropuerto de Asturias",
    "lugar": "Castrillón, Asturias",
@@ -242,21 +214,6 @@
    ],
    "estado": "PUB",
    "publicado": "2026-11-04"
-  },
-  {
-   "titulo": "El objeto de la licitación es la ejecución de las Obras contempladas en el Proyecto de  Obras de demolición y cerramiento provisional de almacén municipal  (PO-IM 7/2026).",
-   "organismo": "Alcaldía del Ayuntamiento de Villanueva del Rosario",
-   "lugar": "Villanueva del Rosario, Málaga",
-   "importe": 114889.02,
-   "plazo": "2026-11-15",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=eOHtEnkmKqDE6P%2FuLemXRw%3D%3D",
-   "cpv": [
-    "45111000",
-    "45261000",
-    "45262660"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-10-26"
   },
   {
    "titulo": "Contrato de obras de ejecución del Proyecto técnico de reparación en la envolvente, canalones y bajantes del Polideportivo Municipal de Piedras Blancas.",
@@ -401,30 +358,30 @@
    "publicado": "2026-10-28"
   },
   {
-   "titulo": "Obras de construcción e instalación de un carro de varada en el puerto de Tapia de Casariego",
-   "organismo": "Consejería de Medio Rural y Política Agraria",
-   "lugar": "Oviedo",
-   "importe": 139569.51,
-   "plazo": "2026-11-17",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=OkAubvYgMs7N3k3tjedSGw%3D%3D",
+   "titulo": "Suministro, instalación y puesta en funcionamiento de cuatro sistemas de estimulación eléctrica funcional (FES) destinados a la Unidad de Neurorehabilitación del Área de Salud I-Occidente del Servicio de Salud del Principado de Asturias",
+   "organismo": "Gerencia del Área Sanitaria III - Avilés del Servicio de Salud del Principado de Asturias (SESPA)",
+   "lugar": "Avilés",
+   "importe": 44600.0,
+   "plazo": "2026-11-18",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=FnezwaTPltUQyBAnWzHfCg%3D%3D",
    "cpv": [
-    "45244000"
+    "33158200"
    ],
    "estado": "PUB",
-   "publicado": "2026-10-27"
+   "publicado": "2026-11-10"
   },
   {
-   "titulo": "Refuerzo del firme en caminos de A Graña de Guiar (Vegadeo)",
-   "organismo": "Consejería de Medio Rural y Política Agraria",
-   "lugar": "Oviedo",
-   "importe": 247898.67,
-   "plazo": "2026-11-17",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=GIAZcl5vYbm7JOCXkOhcDg%3D%3D",
+   "titulo": "Suministro, instalación y puesta en funcionamiento de dos Bipedestadores Multiposicionales para la Unidad de Neurorehabilitación del Área de Salud I Occidente del SESPA",
+   "organismo": "Gerencia del Área Sanitaria III - Avilés del Servicio de Salud del Principado de Asturias (SESPA)",
+   "lugar": "Avilés",
+   "importe": 27600.0,
+   "plazo": "2026-11-18",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=weihUs3bo6vmnwcj%2BxbdTg%3D%3D",
    "cpv": [
-    "45222000"
+    "33155000"
    ],
    "estado": "PUB",
-   "publicado": "2026-10-27"
+   "publicado": "2026-11-10"
   },
   {
    "titulo": "Suministro y legalización de la instalación de una rampa para el centro de recarga de cilindros de aire respirable para el Servicio Geas de la 14ª Zona/Cmd. de la Guardia Civil del Principado de Asturias.",
@@ -562,21 +519,6 @@
    ],
    "estado": "PUB",
    "publicado": "2026-10-30"
-  },
-  {
-   "titulo": "Concesión demanial de uso de la vía pública: Instalación, mantenimiento, gestión y explotación de puntos de recarga vehículos eléctricos (ERVES) en Albalat de la Ribera (Valencia).",
-   "organismo": "Alcaldía del Ayuntamiento de Albalat de la Ribera",
-   "lugar": "Albalat de la Ribera, Valencia/València",
-   "importe": 1642.5,
-   "plazo": "2026-11-19",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=AfIV32zKTnbzAq95uGTrDQ%3D%3D",
-   "cpv": [
-    "51110000",
-    "48421000",
-    "65320000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-10-27"
   },
   {
    "titulo": "Suministro, instalación y puesta en funcionamiento de un separador celular para la Unidad de Aféresis del Hospital Universitario Príncipe de Asturias.",
@@ -732,6 +674,33 @@
    "publicado": "2026-10-28"
   },
   {
+   "titulo": "Contrato de obras para la ejecución del proyecto de acondicionamiento de la arqueta de entrega de agua de CADASA a Llanera",
+   "organismo": "Alcaldía del Ayuntamiento de Llanera",
+   "lugar": "Posada de Llanera, Asturias",
+   "importe": 43062.9,
+   "plazo": "2026-11-24",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=NbiQ1WJhC0TCfVQHDepjGQ%3D%3D",
+   "cpv": [
+    "45232150"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-10"
+  },
+  {
+   "titulo": "Contratación de los servicios definidos en el Plan De Mantenimiento Del Pinar De San Juan De Nieva.",
+   "organismo": "Alcaldia del Ayuntamiento de Castrillón",
+   "lugar": "Castrillón, Asturias",
+   "importe": 51851.5,
+   "plazo": "2026-11-24",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=SrVHAog6JmaIzo3LHNPGcQ%3D%3D",
+   "cpv": [
+    "77312000",
+    "77312100"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-10"
+  },
+  {
    "titulo": "Obras de extensión de red línea alimentación antena telecomunicaciones en las Defradas de las Montañas.",
    "organismo": "Alcaldía del Ayuntamiento de Cangas del Narcea",
    "lugar": "Cangas del Narcea, Asturias",
@@ -743,6 +712,20 @@
    ],
    "estado": "PUB",
    "publicado": "2026-11-03"
+  },
+  {
+   "titulo": "Renovación de muro de cierre en el C.P. Los Campos, por el procedimiento abierto simplificado abreviado, con varios criterios de adjudicación",
+   "organismo": "Concejalía Delegada de Infraestructuras Urbanas y Rurales del Ayuntamiento de Gijón",
+   "lugar": "Gijón, Asturias",
+   "importe": 47124.0,
+   "plazo": "2026-11-25",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=9WkO2%2Fjr7Sgl5NjlNci%2BtA%3D%3D",
+   "cpv": [
+    "45421160",
+    "45262310"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-10"
   },
   {
    "titulo": "Pavimentación y refuerzo de calles en el Municipio de Soto de la Vega",
@@ -802,6 +785,32 @@
    "publicado": "2026-11-08"
   },
   {
+   "titulo": "Asfaltado de diversas calles del municipio",
+   "organismo": "Alcaldía del Ayuntamiento de Villanueva de la Cañada",
+   "lugar": "Villanueva de la Cañada, Madrid",
+   "importe": 1057642.6,
+   "plazo": "2026-11-30",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=xm%2BMKq4olrRq1DdmE7eaXg%3D%3D",
+   "cpv": [
+    "45233223"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-10"
+  },
+  {
+   "titulo": "Obras de sustitución de cubierta y reforma parcial de los vestuarios de las instalaciones deportivas de La Toba, Avilés",
+   "organismo": "Alcaldía del Ayuntamiento de Avilés",
+   "lugar": "Avilés, Asturias, Avilés, Asturias",
+   "importe": 171513.04,
+   "plazo": "2026-11-30",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=i4dR3si3V2e2gkLQ8TeYKA%3D%3D",
+   "cpv": [
+    "45000000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-10"
+  },
+  {
    "titulo": "Contratación de las obras correspondientes el proyecto técnico denominado suministro e instalación de columpio, banco gigante y acondicionamiento de zona de ocio en Aldeadávila de la Ribera (Salamanca)",
    "organismo": "Alcaldía del Ayuntamiento de Aldeadávila de la Ribera",
    "lugar": "Aldeadávila de la Ribera, Salamanca",
@@ -830,17 +839,19 @@
    "publicado": "2026-11-06"
   },
   {
-   "titulo": "Contratación del servicio, instalación, conservación y mantenimiento de la señalización viaria (horizontal y vertical) de la red de carreteras, calles y caminos municipales del Ayuntamiento de Siero",
-   "organismo": "Junta de Gobierno del Ayuntamiento de Siero",
-   "lugar": "La Pola Siero, Asturias",
-   "importe": 111570.25,
-   "plazo": "2026-12-01",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=7nUEQ22IqKCGCFcHcNGIlQ%3D%3D",
+   "titulo": "Contrato de obra para la ejecución de una de senda litoral entre Lastres y la playa de La Griega y acondicionamiento de la playa de Lastres, Colunga",
+   "organismo": "Consejería de Ordenación del Territorio, Urbanismo, Vivienda y Derechos Ciudadanos del Principado de Asturias",
+   "lugar": "Oviedo, Asturias",
+   "importe": 1269919.57,
+   "plazo": "2026-12-09",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=qv2mTW5XYM3zAq95uGTrDQ%3D%3D",
    "cpv": [
-    "50232200"
+    "45200000",
+    "45233200",
+    "45111200"
    ],
    "estado": "PUB",
-   "publicado": "2026-10-27"
+   "publicado": "2026-11-10"
   },
   {
    "titulo": "Sistema dinámico para el suministro de astilla para generación de energía térmica en calderas de biomasa de Hunosa",
@@ -856,6 +867,21 @@
    ],
    "estado": "EV",
    "publicado": "2026-11-04"
+  },
+  {
+   "titulo": "Institución del sistema dinámico de adquisición para el suministro, instalación, puesta en funcionamiento y suministro de repuestos de estaciones de contenedores soterrados destinados a la recogida de residuos en el municipio de Gijón durante cuatro años",
+   "organismo": "Consejo de Administración de la Empresa Municipal de Servicios de Medio Ambiente Urbano de Gijón (EMULSA)",
+   "lugar": "Gijón, Asturias",
+   "importe": 750000.0,
+   "plazo": "2030-12-10",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=c7zBhG4U%2FnDLIx6q1oPaMg%3D%3D",
+   "cpv": [
+    "44613800",
+    "34952000",
+    "45259000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-10"
   },
   {
    "titulo": "Eliminación de amianto de la cubierta del Casa Concejil de Villanueva de Yerri.",
