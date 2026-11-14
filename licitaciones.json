@@ -1,50 +1,6 @@
 {
- "actualizado": "2026-11-13T08:35:37Z",
+ "actualizado": "2026-11-14T06:59:27Z",
  "items": [
-  {
-   "titulo": "Contratación, mediante el sistema de lotes, de los suministros en régimen de alquiler y servicio de montaje, instalación y desmontaje de escenarios para la celebración de los programas veraniegos de festejos organizados por Divertia Gijón S.A.",
-   "organismo": "Consejo de Administración de Divertia Gijón S.A.",
-   "lugar": "Gijón, Asturias",
-   "importe": 124000.0,
-   "plazo": "2026-11-13",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=GCUGoXEK34txseVhcqrkhw%3D%3D",
-   "cpv": [
-    "44210000",
-    "45223800",
-    "44210000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-05"
-  },
-  {
-   "titulo": "Contrato mixto de suministro de casetas de madera con servicio de instalación eléctrica para el mercadillo de navidad",
-   "organismo": "Alcaldía del Ayuntamiento de Langreo",
-   "lugar": "Langreo, Asturias",
-   "importe": 23471.06,
-   "plazo": "2026-11-13",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=GBJiUaCoCB87%2B9FIQYNjeQ%3D%3D",
-   "cpv": [
-    "44211100",
-    "45310000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-10-29"
-  },
-  {
-   "titulo": "Contrato Mixto de Suministro y Servicio en régimen de arrendamiento, montaje, puesta en funcionamiento, asistencia técnica, mantenimiento y desmontaje del equipamiento de sonido e iluminación espectacular a instalar en la plaza de la Constitución de Villaviciosa de Odón durante las fiestas navideñas 2026/2027.",
-   "organismo": "Alcaldía del Ayuntamiento de Villaviciosa de Odón",
-   "lugar": "Villaviciosa de Odón, Madrid",
-   "importe": 26400.0,
-   "plazo": "2026-11-13",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=yurSs3mTNrtQFSeKCRun4Q%3D%3D",
-   "cpv": [
-    "31527200",
-    "32342410",
-    "51313000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-10-29"
-  },
   {
    "titulo": "Instalación De Nuevo Vallado Perimetral De Seguridad En El Aeropuerto De Asturias",
    "organismo": "Aena. Dirección del Aeropuerto de Asturias",
@@ -117,21 +73,6 @@
    "publicado": "2026-10-30"
   },
   {
-   "titulo": "D_AEC SALUD_Suministro, instalación y puesta en funcionamiento de unidades de Rayos X intraoral, lectores de placa de fósforo y delantales plomados para las Unidades de Salud Bucodental del SESPA",
-   "organismo": "Servicio de Salud - Servicios Centrales",
-   "lugar": "Oviedo, Asturias",
-   "importe": 400995.49,
-   "plazo": "2026-11-16",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=SqrYiPGxga8adbH3CysQuQ%3D%3D",
-   "cpv": [
-    "33130000",
-    "35113400",
-    "33111000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-10-30"
-  },
-  {
    "titulo": "Suministro, instalación y puesta en funcionamiento de dos equipos de cinesiterapia motorizada para el entrenamiento de miembros inferiores y superiores destinados a la Unidad de Neurorehabilitación del Área de Salud I-Occidente del SESPA",
    "organismo": "Gerencia del Área Sanitaria III - Avilés del Servicio de Salud del Principado de Asturias (SESPA)",
    "lugar": "Avilés",
@@ -156,6 +97,19 @@
    ],
    "estado": "PUB",
    "publicado": "2026-11-03"
+  },
+  {
+   "titulo": "Contratación del servicio de mantenimiento preventivo, correctivo y técnico legal de las instalaciones de protección contra incendios en los establecimientos residenciales adscritos al Organismo Autónomo Establecimientos Residenciales para Ancianos de Asturias (ERA)",
+   "organismo": "Organismo Autónomo Establecimientos Residenciales para Ancianos de Asturias",
+   "lugar": "Oviedo, Asturias",
+   "importe": 59563.18,
+   "plazo": "2026-11-18",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=GqAI87gz4iPi0Kd8%2Brcp6w%3D%3D",
+   "cpv": [
+    "50413200"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-13"
   },
   {
    "titulo": "Suministro, instalación y puesta en funcionamiento de cuatro sistemas de estimulación eléctrica funcional (FES) destinados a la Unidad de Neurorehabilitación del Área de Salud I-Occidente del Servicio de Salud del Principado de Asturias",
@@ -219,19 +173,6 @@
    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=SLzz8JaOvJCLAncw3qdZkA%3D%3D",
    "cpv": [
     "34992300"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-03"
-  },
-  {
-   "titulo": "Contratación del servicio de mantenimiento preventivo, correctivo y técnico legal de las instalaciones de protección contra incendios en los establecimientos residenciales adscritos al Organismo Autónomo Establecimientos Residenciales para Ancianos de Asturias (ERA)",
-   "organismo": "Organismo Autónomo Establecimientos Residenciales para Ancianos de Asturias",
-   "lugar": "Oviedo, Asturias",
-   "importe": 59563.18,
-   "plazo": "2026-11-18",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=GqAI87gz4iPi0Kd8%2Brcp6w%3D%3D",
-   "cpv": [
-    "50413200"
    ],
    "estado": "PUB",
    "publicado": "2026-11-03"
@@ -639,6 +580,34 @@
    "publicado": "2026-11-06"
   },
   {
+   "titulo": "Contrato de los trabajos de revisión de botellas de los equipos de respiración autónoma, botellas de buceo y mantenimiento de compresores pertenecientes al servicio de prevención y extinción de incendios del ayuntamiento de Oviedo 2027-2029",
+   "organismo": "Junta de Gobierno del Ayuntamiento de Oviedo",
+   "lugar": "Oviedo, Asturias",
+   "importe": 40892.94,
+   "plazo": "2026-11-27",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=33B89WRRtKzi0Kd8%2Brcp6w%3D%3D",
+   "cpv": [
+    "50610000",
+    "50531300",
+    "71630000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-13"
+  },
+  {
+   "titulo": "Recogida, transporte, instalación y retirada de bloques de hormigón",
+   "organismo": "Alcaldía del Ayuntamiento de Villanueva de la Cañada",
+   "lugar": "Villanueva de la Cañada, Madrid",
+   "importe": 20000.0,
+   "plazo": "2026-11-27",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=XZa8YR05RHtQFSeKCRun4Q%3D%3D",
+   "cpv": [
+    "51500000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-13"
+  },
+  {
    "titulo": "alquiler e instalación de equipos eléctricos para los eventos festivos",
    "organismo": "Junta de Gobierno del Ayuntamiento de Navia",
    "lugar": "Navia, Asturias",
@@ -680,6 +649,75 @@
    ],
    "estado": "PUB",
    "publicado": "2026-11-11"
+  },
+  {
+   "titulo": "Adquisición sucesiva de alimentación y arena de gato para las instalaciones de los centros de acogida de animales abandonados de los municipios de Tavernes de la Valldigna, Alcúdia y Alzira del Consorcio de la Ribera, y el transporte hasta las mismas.",
+   "organismo": "Presidencia del Consorci de la Ribera",
+   "lugar": "Alzira, Valencia/València",
+   "importe": 67731.65,
+   "plazo": "2026-11-30",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=XxVSqMX19FPkY6rls5tG9A%3D%3D",
+   "cpv": [
+    "15713000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-13"
+  },
+  {
+   "titulo": "Contrato mixto de obras de instalación y servicio de reparación de sistemas de climatización en edificios municipales",
+   "organismo": "Alcaldía del Ayuntamiento de Langreo",
+   "lugar": "Langreo, Asturias",
+   "importe": 179416.0,
+   "plazo": "2026-11-30",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=ktMrtf23hFQ2wEhQbcAqug%3D%3D",
+   "cpv": [
+    "45331000",
+    "42511110",
+    "42512300"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-13"
+  },
+  {
+   "titulo": "Asistencia técnica para dirección de obra de la instalación fronteriza de control de mercancías (IFCM) en el Puerto de Gijón",
+   "organismo": "Presidencia de la Autoridad Portuaria de Gijón",
+   "lugar": "Gijón, Asturias",
+   "importe": 287112.79,
+   "plazo": "2026-11-30",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=d2rNXW89mgeHCIsjvJ3rhQ%3D%3D",
+   "cpv": [
+    "71520000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-13"
+  },
+  {
+   "titulo": "Suministro de material para el mantenimiento y conservación de las instalaciones del Servicio Público de Empleo del Principado de Asturias",
+   "organismo": "Servicio Público de Empleo del Principado de Asturias",
+   "lugar": "Oviedo",
+   "importe": 20451.38,
+   "plazo": "2026-11-30",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=R9cZ8XcH5%2FxeKgd8LfVV9g%3D%3D",
+   "cpv": [
+    "44316400",
+    "31680000",
+    "44115200"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-13"
+  },
+  {
+   "titulo": "Servicio de redacción de proyecto básico y de ejecución, estudio de seguridad y salud, proyectos parciales y/o específicos de las instalaciones de las obras de adecuación de local para Oficina de Empleo de Pola de Siero",
+   "organismo": "Servicio Público de Empleo del Principado de Asturias",
+   "lugar": "Oviedo",
+   "importe": 23483.84,
+   "plazo": "2026-11-30",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=1Wu1VmicxrNeKgd8LfVV9g%3D%3D",
+   "cpv": [
+    "71200000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-13"
   },
   {
    "titulo": "Obras de sustitución de cubierta y reforma parcial de los vestuarios de las instalaciones deportivas de La Toba, Avilés",
@@ -775,6 +813,21 @@
    ],
    "estado": "PUB",
    "publicado": "2026-11-12"
+  },
+  {
+   "titulo": "Rehabilitación parcial de las antiguas escuelas de La Borbolla",
+   "organismo": "Alcaldía del Ayuntamiento de Llanes",
+   "lugar": "Llanes, Asturias",
+   "importe": 111558.07,
+   "plazo": "2026-12-03",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=%2BBp07%2F3eN0YeIBJRHQiPkQ%3D%3D",
+   "cpv": [
+    "45000000",
+    "45261200",
+    "45260000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-13"
   },
   {
    "titulo": "Contrato de obra para la ejecución de una de senda litoral entre Lastres y la playa de La Griega y acondicionamiento de la playa de Lastres, Colunga",
