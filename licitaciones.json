@@ -1,64 +1,6 @@
 {
- "actualizado": "2026-11-16T09:22:25Z",
+ "actualizado": "2026-11-17T06:56:24Z",
  "items": [
-  {
-   "titulo": "contratación de las obras de instalación eléctrica en baja tensión para alumbrado público de la glorieta existente en la intersección de la N-634 y la NO-1, en la Revuelta del Coche, en Argüelles",
-   "organismo": "Alcaldía del Ayuntamiento de Siero",
-   "lugar": "Pola de Siero (Principado de Asturias), Asturias",
-   "importe": 60956.35,
-   "plazo": "2026-11-16",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=l8gcCVSpsPhq1DdmE7eaXg%3D%3D",
-   "cpv": [
-    "45316000",
-    "45316100"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-11"
-  },
-  {
-   "titulo": "Contrato de obras de ejecución del Proyecto técnico de reparación en la envolvente, canalones y bajantes del Polideportivo Municipal de Piedras Blancas.",
-   "organismo": "Alcaldia del Ayuntamiento de Castrillón",
-   "lugar": "Castrillón, Piedras Blancas, Asturias",
-   "importe": 73982.56,
-   "plazo": "2026-11-16",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=K%2FDtj1bhIMJJ8Trn0ZPzLw%3D%3D",
-   "cpv": [
-    "45261900",
-    "45261320",
-    "45443000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-06"
-  },
-  {
-   "titulo": "Obras de sustitución completa de los tres ascensores instalados en el edificio administrativo sito en calle Hermanos Menéndez Pidal, 7 y 9 - (Oviedo).",
-   "organismo": "Consejería de Hacienda, Justicia y Asuntos Europeos del Principado de Asturias",
-   "lugar": "Oviedo, OVIEDO",
-   "importe": 247894.05,
-   "plazo": "2026-11-16",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=06xt3glodjVVkTabT%2FRM8A%3D%3D",
-   "cpv": [
-    "45310000",
-    "45313100"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-05"
-  },
-  {
-   "titulo": "Suministro de maquinaria para labores de jardinería, mediante sistema de lotes",
-   "organismo": "Consejo de Administración de la Empresa Municipal de Servicios de Medio Ambiente Urbano de Gijón (EMULSA)",
-   "lugar": "Gijón, Asturias",
-   "importe": 167000.0,
-   "plazo": "2026-11-16",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=wrvF7u4p1%2BgaF6cS8TCh%2FA%3D%3D",
-   "cpv": [
-    "16160000",
-    "42670000",
-    "50530000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-10-30"
-  },
   {
    "titulo": "Suministro, instalación y puesta en funcionamiento de dos equipos de cinesiterapia motorizada para el entrenamiento de miembros inferiores y superiores destinados a la Unidad de Neurorehabilitación del Área de Salud I-Occidente del SESPA",
    "organismo": "Gerencia del Área Sanitaria III - Avilés del Servicio de Salud del Principado de Asturias (SESPA)",
@@ -904,21 +846,6 @@
    ],
    "estado": "PUB",
    "publicado": "2026-11-10"
-  },
-  {
-   "titulo": "Eliminación de amianto de la cubierta del Casa Concejil de Villanueva de Yerri.",
-   "organismo": "CONCEJO DE VILLANUEVA DE YERRI / HIRIBERRI DEIERRI",
-   "lugar": "",
-   "importe": 37447.73,
-   "plazo": "",
-   "enlace": "https://hacienda.navarra.es/sicpportal/mtoAnunciosModalidad.aspx?cod=2609211810059D23DF38",
-   "cpv": [
-    "45262660",
-    "45213150",
-    "45261000"
-   ],
-   "estado": "EV",
-   "publicado": "2026-10-14"
   }
  ]
 }
