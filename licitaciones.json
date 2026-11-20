@@ -1,75 +1,6 @@
 {
- "actualizado": "2026-11-19T07:58:27Z",
+ "actualizado": "2026-11-20T09:28:07Z",
  "items": [
-  {
-   "titulo": "Diseño, instalación y posterior desmontaje de la iluminación decorativa de carácter navideño en el Palacio de la Junta General del Principado de Asturias, sito en la calle Fruela nº13, de Oviedo",
-   "organismo": "Mesa de la Cámara de la Junta General del Principado de Asturias",
-   "lugar": "Oviedo, Asturias",
-   "importe": 33320.0,
-   "plazo": "2026-11-19",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=L6FQcebfjxrLIx6q1oPaMg%3D%3D",
-   "cpv": [
-    "31527200",
-    "31500000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-11"
-  },
-  {
-   "titulo": "Contrato de obras para la ejecucion de trabajos sobre la interfaz urbano-forestal del concejo de Parres",
-   "organismo": "Junta de Gobierno del Ayuntamiento de Parres",
-   "lugar": "Arriondas, Asturias",
-   "importe": 42646.0,
-   "plazo": "2026-11-19",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=MnyjA9HNOrYaF6cS8TCh%2FA%3D%3D",
-   "cpv": [
-    "45111220",
-    "45111200"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-09"
-  },
-  {
-   "titulo": "Contrato de suministro e instalación de grupo electrógeno para el Museu Pueblu d'Asturies",
-   "organismo": "Presidencia de la Fundación Municipal de Cultura, Educación y Universidad Popular de Gijón",
-   "lugar": "Gijón, Asturias",
-   "importe": 20000.0,
-   "plazo": "2026-11-19",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=8YqPaonvgyFWhbmkna2nXQ%3D%3D",
-   "cpv": [
-    "31121000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-04"
-  },
-  {
-   "titulo": "Mantenimiento de zonas verdes y espacios públicos municipales",
-   "organismo": "Junta de Gobierno del Ayuntamiento de Corvera de Asturias",
-   "lugar": "Corvera, Asturias",
-   "importe": 100677.72,
-   "plazo": "2026-11-19",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=%2BqlaM2ndIsmHCIsjvJ3rhQ%3D%3D",
-   "cpv": [
-    "77310000",
-    "77310000",
-    "77310000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-04"
-  },
-  {
-   "titulo": "Suministro, instalación y puesta en funcionamiento de un separador celular para la Unidad de Aféresis del Hospital Universitario Príncipe de Asturias.",
-   "organismo": "Hospital Universitario Príncipe de Asturias",
-   "lugar": "",
-   "importe": 59990.0,
-   "plazo": "2026-11-19",
-   "enlace": "https://contratos-publicos.comunidad.madrid/contrato-publico/suministro-instalacion-puesta-funcionamiento-separador-celular-unidad-aferesis",
-   "cpv": [
-    "33100000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-04"
-  },
   {
    "titulo": "Cambio, reposición y ampliación de la red de fibra óptica en el Puerto de El Musel",
    "organismo": "Presidencia de la Autoridad Portuaria de Gijón",
@@ -83,7 +14,7 @@
     "32235000"
    ],
    "estado": "PUB",
-   "publicado": "2026-11-12"
+   "publicado": "2026-11-19"
   },
   {
    "titulo": "Servicio integral de mantenimiento de los extintores de incendio instalados en los acuartelamientos del ámbito territorial de la 14ª Zona/Comandancia de la Guardia Civil del Principado de Asturias.",
@@ -237,19 +168,6 @@
    ],
    "estado": "PUB",
    "publicado": "2026-11-10"
-  },
-  {
-   "titulo": "Pavimentación y refuerzo de calles en el Municipio de Soto de la Vega",
-   "organismo": "Pleno del Ayuntamiento de Soto de la Vega",
-   "lugar": "Soto de la Vega, León",
-   "importe": 760330.58,
-   "plazo": "2026-11-25",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=lN5WybKBDdCLAncw3qdZkA%3D%3D",
-   "cpv": [
-    "45233222"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-05"
   },
   {
    "titulo": "Contrato de obras para el camino público C-918 \"Camino de Enlace\"",
@@ -419,6 +337,19 @@
    "publicado": "2026-11-12"
   },
   {
+   "titulo": "Adquisición sucesiva de alimentación y arena de gato para las instalaciones de los centros de acogida de animales abandonados de los municipios de Tavernes de la Valldigna, Alcúdia y Alzira del Consorcio de la Ribera, y el transporte hasta las mismas.",
+   "organismo": "Presidencia del Consorci de la Ribera",
+   "lugar": "Alzira, Valencia/València",
+   "importe": 67731.65,
+   "plazo": "2026-11-30",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=XxVSqMX19FPkY6rls5tG9A%3D%3D",
+   "cpv": [
+    "15713000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-19"
+  },
+  {
    "titulo": "Suministro e instalacion de 3 conjuntos de parques biosaludables",
    "organismo": "Alcaldía del Ayuntamiento de Ribadesella",
    "lugar": "Ribadesella, RIBADESELLA/RIBESEYA, Asturias",
@@ -443,19 +374,6 @@
    ],
    "estado": "PUB",
    "publicado": "2026-11-16"
-  },
-  {
-   "titulo": "Adquisición sucesiva de alimentación y arena de gato para las instalaciones de los centros de acogida de animales abandonados de los municipios de Tavernes de la Valldigna, Alcúdia y Alzira del Consorcio de la Ribera, y el transporte hasta las mismas.",
-   "organismo": "Presidencia del Consorci de la Ribera",
-   "lugar": "Alzira, Valencia/València",
-   "importe": 67731.65,
-   "plazo": "2026-11-30",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=XxVSqMX19FPkY6rls5tG9A%3D%3D",
-   "cpv": [
-    "15713000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-13"
   },
   {
    "titulo": "Contrato mixto de obras de instalación y servicio de reparación de sistemas de climatización en edificios municipales",
@@ -610,6 +528,20 @@
    "publicado": "2026-11-12"
   },
   {
+   "titulo": "Suministro e instalación de una estructura truss de iluminación y la preinstalación para conexión de dimmer en el salón de actos del Centro Polivalente de Santiago de Arenas,  que había quedado desierto en anterior licitación.",
+   "organismo": "Vicepresidencia de la Fundación Municipal de Cultura de Siero",
+   "lugar": "La Pola de Siero, Asturias",
+   "importe": 7438.02,
+   "plazo": "2026-12-03",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=yZhrKnYyWSQIYE3ZiZ%2BxmQ%3D%3D",
+   "cpv": [
+    "44212300",
+    "31500000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-19"
+  },
+  {
    "titulo": "Rehabilitación parcial de las antiguas escuelas de La Borbolla",
    "organismo": "Alcaldía del Ayuntamiento de Llanes",
    "lugar": "Llanes, Asturias",
@@ -623,6 +555,76 @@
    ],
    "estado": "PUB",
    "publicado": "2026-11-13"
+  },
+  {
+   "titulo": "Instalación de ascensor en consultorio médico de El Grado (Coscojuela de Fantova)",
+   "organismo": "Alcaldía del Ayuntamiento de El Grado",
+   "lugar": "El Grado, Coscojuela de Fantova, Huesca",
+   "importe": 81147.91,
+   "plazo": "2026-12-09",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=OPsd7gWYKzcIYE3ZiZ%2BxmQ%3D%3D",
+   "cpv": [
+    "45313100"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-19"
+  },
+  {
+   "titulo": "Ejecución del Proyecto \"Creación de cortafuegos natuales mediante zonas de pasto en el MUP 162 Cuesta de Coya y Ques\" en el Concejo de Piloña.",
+   "organismo": "Alcaldía del Ayuntamiento de Piloña",
+   "lugar": "Infiesto-Piloña (Principado de Asturias), Infiesto, Asturias",
+   "importe": 69500.87,
+   "plazo": "2026-12-09",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=7m5SrmNeURKExvMJXBMHHQ%3D%3D",
+   "cpv": [
+    "45111200",
+    "45111220"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-19"
+  },
+  {
+   "titulo": "Rehabilitación del Casino de Llanes - Fase 1 actuación prioritaria",
+   "organismo": "Alcaldía del Ayuntamiento de Llanes",
+   "lugar": "Llanes, Asturias",
+   "importe": 740389.32,
+   "plazo": "2026-12-09",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=W1utmM4It%2BG2gkLQ8TeYKA%3D%3D",
+   "cpv": [
+    "45000000",
+    "45262600",
+    "45212350"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-18"
+  },
+  {
+   "titulo": "Obras de reparación del camino de la Paraya al Puerto de Pedrafita",
+   "organismo": "Alcaldía del Ayuntamiento de Aller",
+   "lugar": "Cabañaquinta, Asturias",
+   "importe": 49458.78,
+   "plazo": "2026-12-09",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=vkh2CE5kdqo%2FbjW6njtWLw%3D%3D",
+   "cpv": [
+    "45233140"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-18"
+  },
+  {
+   "titulo": "Obras del proyecto actualizado del colector de evacuación y tratamiento de aguas pluviales en el ámbito de la Glorieta del Caballo (La Guía-Viesques)",
+   "organismo": "Consejo de Administración de la Empresa Municipal de Aguas de Gijón SA",
+   "lugar": "Gijón, Asturias",
+   "importe": 1246351.27,
+   "plazo": "2026-12-09",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=5crdqx%2BQu%2BBrSd8H4b2soA%3D%3D",
+   "cpv": [
+    "45231300",
+    "45231112",
+    "45230000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-18"
   },
   {
    "titulo": "Obra de reforma del Parque Avelino Vidal, por procedimiento abierto simplificado, con varios criterios de adjudicación.",
@@ -646,21 +648,6 @@
    "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=i4dR3si3V2e2gkLQ8TeYKA%3D%3D",
    "cpv": [
     "45000000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-17"
-  },
-  {
-   "titulo": "Obras del proyecto actualizado del colector de evacuación y tratamiento de aguas pluviales en el ámbito de la Glorieta del Caballo (La Guía-Viesques)",
-   "organismo": "Consejo de Administración de la Empresa Municipal de Aguas de Gijón SA",
-   "lugar": "Gijón, Asturias",
-   "importe": 1246351.27,
-   "plazo": "2026-12-09",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=5crdqx%2BQu%2BBrSd8H4b2soA%3D%3D",
-   "cpv": [
-    "45231300",
-    "45231112",
-    "45230000"
    ],
    "estado": "PUB",
    "publicado": "2026-11-17"
@@ -691,7 +678,20 @@
     "45233252"
    ],
    "estado": "PUB",
-   "publicado": "2026-11-17"
+   "publicado": "2026-11-18"
+  },
+  {
+   "titulo": "Obras para la sustitución de lucernarios en colegios, por el procedimiento abierto simplificado y con varios criterios de adjudicación",
+   "organismo": "Concejalía Delegada de Infraestructuras Urbanas y Rurales del Ayuntamiento de Gijón",
+   "lugar": "Gijón, Asturias",
+   "importe": 73901.6,
+   "plazo": "2026-12-10",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=tC%2BABeWE7%2FRVkTabT%2FRM8A%3D%3D",
+   "cpv": [
+    "45260000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-19"
   },
   {
    "titulo": "Suministro eléctrico de los equipamientos, instalaciones, edificios, dependencias y alumbrado público",
@@ -719,7 +719,7 @@
     "77200000"
    ],
    "estado": "PUB",
-   "publicado": "2026-11-16"
+   "publicado": "2026-11-18"
   },
   {
    "titulo": "Institución del acuerdo marco (AM) de homologación de operadores económicos especializados para el suministro de combustible para la flota de vehículos y maquinaria en las instalaciones de EMULSA durante cuatro años",
@@ -751,19 +751,47 @@
    "publicado": "2026-11-12"
   },
   {
-   "titulo": "Sistema dinámico para el suministro de astilla para generación de energía térmica en calderas de biomasa de Hunosa",
-   "organismo": "Hulleras del Norte S.A.",
-   "lugar": "Oviedo, Asturias",
-   "importe": 433500.0,
-   "plazo": "2027-03-19",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=i6vv1i6AnaaGCFcHcNGIlQ%3D%3D",
+   "titulo": "Suministros vehículos y maquinaria para el área de medio rural, parques y jardines.",
+   "organismo": "Alcaldía del Ayuntamiento de Langreo",
+   "lugar": "Langreo, Asturias",
+   "importe": 247933.88,
+   "plazo": "2026-12-17",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=BvkqRSSqMtScCF8sV%2BqtYA%3D%3D",
    "cpv": [
-    "03419100",
-    "03419100",
-    "03419100"
+    "16160000",
+    "34100000",
+    "34100000"
    ],
-   "estado": "EV",
-   "publicado": "2026-11-04"
+   "estado": "PUB",
+   "publicado": "2026-11-19"
+  },
+  {
+   "titulo": "[UT1] Arranque y excavación en roca mediante uso de explosivos en el proyecto de rehabilitación del espacio natural y restauración de pasivos ambientales afectados por la unidad de producción grupo Cerredo y su adecuación para los usos finales del suelo previstos, con cargo al Plan de Recuperación, Transformación y Resiliencia (PRTR), financiado por la Unión Europea-NextGenerationEU.",
+   "organismo": "Empresa de Transformación Agraria S.A.,S.M.E., M.P., (TRAGSA)",
+   "lugar": "Madrid, Asturias",
+   "importe": 987326.4,
+   "plazo": "2026-12-21",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=dAl6ejDkC9rLIx6q1oPaMg%3D%3D",
+   "cpv": [
+    "45112000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-19"
+  },
+  {
+   "titulo": "Proyecto de mejora del aislamiento exterior edificio 2001 APA e instalación de placas fotovoltaicas para autoconsumo. P745_0. Cofinanciado por la Unión Europea mediante el Fondo Europeo de Desarrollo Regional (FEDER) 2021-2027.",
+   "organismo": "Autoridad Portuaria de Avilés",
+   "lugar": "Avilés, Asturias",
+   "importe": 1898225.92,
+   "plazo": "2027-01-12",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=kL4%2FHYPfJOUwYTJJ03sHog%3D%3D",
+   "cpv": [
+    "45262650",
+    "45262410",
+    "45261213"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-19"
   },
   {
    "titulo": "Institución del sistema dinámico de adquisición para el suministro, instalación, puesta en funcionamiento y suministro de repuestos de estaciones de contenedores soterrados destinados a la recogida de residuos en el municipio de Gijón durante cuatro años",
