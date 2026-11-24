@@ -1,34 +1,6 @@
 {
- "actualizado": "2026-11-23T09:04:13Z",
+ "actualizado": "2026-11-24T09:39:33Z",
  "items": [
-  {
-   "titulo": "Suministro e instalación de un muro de video (videowall) en la Policía Local",
-   "organismo": "Alcaldía del Ayuntamiento de Langreo",
-   "lugar": "Langreo, Asturias",
-   "importe": 36500.0,
-   "plazo": "2026-11-23",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=yzLhStZy1%2BUmMOlAXxDEjw%3D%3D",
-   "cpv": [
-    "32321200"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-09"
-  },
-  {
-   "titulo": "Renovación del espacio público de convivencia intergeneracional en el núcleo rural de Niembro",
-   "organismo": "Alcaldía del Ayuntamiento de Llanes",
-   "lugar": "Llanes, Concejo de Llanes, Asturias",
-   "importe": 51637.74,
-   "plazo": "2026-11-23",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=WRmkr1XZdhs%2FbjW6njtWLw%3D%3D",
-   "cpv": [
-    "45432100",
-    "45233293",
-    "45100000"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-09"
-  },
   {
    "titulo": "Contratación de los servicios definidos en el Plan De Mantenimiento Del Pinar De San Juan De Nieva.",
    "organismo": "Alcaldia del Ayuntamiento de Castrillón",
@@ -333,19 +305,6 @@
    "publicado": "2026-11-13"
   },
   {
-   "titulo": "Contratación de las obras correspondientes el proyecto técnico denominado suministro e instalación de columpio, banco gigante y acondicionamiento de zona de ocio en Aldeadávila de la Ribera (Salamanca)",
-   "organismo": "Alcaldía del Ayuntamiento de Aldeadávila de la Ribera",
-   "lugar": "Aldeadávila de la Ribera, Salamanca",
-   "importe": 65366.7,
-   "plazo": "2026-11-30",
-   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=aDP5npK%2FX3GIzo3LHNPGcQ%3D%3D",
-   "cpv": [
-    "45112720"
-   ],
-   "estado": "PUB",
-   "publicado": "2026-11-09"
-  },
-  {
    "titulo": "Servicio de limpieza y jardinería del Instituto Asturiano de Administración Pública \"Adolfo Posada\"",
    "organismo": "Consejería de Presidencia, Reto Demográfico, Igualdad y Turismo del Principado de Asturias",
    "lugar": "Oviedo",
@@ -414,6 +373,19 @@
    "publicado": "2026-11-12"
   },
   {
+   "titulo": "suministro gasoleo calefacción destino instalaciones MRIE",
+   "organismo": "Presidencia de la Mancomunidad Ribera Izquierda del Ebro",
+   "lugar": "Alfajarín, Alfajarin, Zaragoza",
+   "importe": 4550.0,
+   "plazo": "2026-12-03",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=lJjRG%2F5z3wyHCIsjvJ3rhQ%3D%3D",
+   "cpv": [
+    "09134000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-23"
+  },
+  {
    "titulo": "Urbanización y asfaltado de la parcela del nuevo Centro de Salud de Villanueva de Córdoba Fases 1 y 2.",
    "organismo": "Alcaldia del Ayuntamiento de Villanueva de Córdoba",
    "lugar": "Villanueva de Córdoba, Córdoba",
@@ -456,6 +428,49 @@
    ],
    "estado": "PUB",
    "publicado": "2026-11-13"
+  },
+  {
+   "titulo": "Obra para instalación fotovoltaica de autoconsumo colectivo en Almacén/Gimnasio de La Nava de Santiago",
+   "organismo": "ALCALDÍA DEL AYUNTAMIENTO DE LA NAVA DE SANTIAGO",
+   "lugar": "LA NAVA DE SANTIAGO",
+   "importe": 64784.16,
+   "plazo": "2026-12-09",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=0xNgTMykdpJrSd8H4b2soA%3D%3D",
+   "cpv": [
+    "45310000",
+    "45261215",
+    "45315600"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-23"
+  },
+  {
+   "titulo": "Pavimentación de la Plaza del Mercado de Porrúa - Llanes (PASS)",
+   "organismo": "Alcaldía del Ayuntamiento de Llanes",
+   "lugar": "Llanes, Asturias",
+   "importe": 73362.56,
+   "plazo": "2026-12-09",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=Ll7RNYoFMHAeIBJRHQiPkQ%3D%3D",
+   "cpv": [
+    "45233222",
+    "45432112"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-23"
+  },
+  {
+   "titulo": "Suministros, en régimen de alquiler, de tres carrozas-tronos reales para su desfile en la Cabalgata de Reyes de 2027 (PASS)",
+   "organismo": "Alcaldía del Ayuntamiento de Llanes",
+   "lugar": "Llanes, Asturias",
+   "importe": 17500.0,
+   "plazo": "2026-12-09",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=ohuYw7iKmZa9Hd5zqvq9cg%3D%3D",
+   "cpv": [
+    "39298900",
+    "34223000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-23"
   },
   {
    "titulo": "Rehabilitación del Casino de Llanes - Fase 1 actuación prioritaria",
@@ -695,6 +710,34 @@
    "publicado": "2026-11-11"
   },
   {
+   "titulo": "Obras de reforma y ampliación de las instalaciones deportivas del complejo de Tabiella, San Pedro Navarro, Avilés",
+   "organismo": "Alcaldía del Ayuntamiento de Avilés",
+   "lugar": "Avilés, Asturias, Asturias",
+   "importe": 524790.0,
+   "plazo": "2026-12-14",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=6wegeV%2BKrexSYrkJkLlFdw%3D%3D",
+   "cpv": [
+    "45000000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-23"
+  },
+  {
+   "titulo": "Renovación de la Calle Celso Amieva (acera oeste) - Llanes",
+   "organismo": "Alcaldía del Ayuntamiento de Llanes",
+   "lugar": "Llanes, Asturias",
+   "importe": 149044.68,
+   "plazo": "2026-12-14",
+   "enlace": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=9A6AdLy5ZIM3vLk2DU2Ddg%3D%3D",
+   "cpv": [
+    "45233252",
+    "45233340",
+    "45100000"
+   ],
+   "estado": "PUB",
+   "publicado": "2026-11-23"
+  },
+  {
    "titulo": "Servicio de jardinería para diversos centros e institutos de la Agencia Estatal Consejo Superior de Investigaciones Científicas.",
    "organismo": "Secretaría General de la Agencia Estatal Consejo Superior de Investigaciones Científicas",
    "lugar": "Madrid, España, Pontevedra, Principado de Asturias",
@@ -722,7 +765,7 @@
     "34100000"
    ],
    "estado": "PUB",
-   "publicado": "2026-11-20"
+   "publicado": "2026-11-23"
   },
   {
    "titulo": "[UT1] Arranque y excavación en roca mediante uso de explosivos en el proyecto de rehabilitación del espacio natural y restauración de pasivos ambientales afectados por la unidad de producción grupo Cerredo y su adecuación para los usos finales del suelo previstos, con cargo al Plan de Recuperación, Transformación y Resiliencia (PRTR), financiado por la Unión Europea-NextGenerationEU.",
